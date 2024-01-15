@@ -10,5 +10,6 @@
     </root>
   
     <logger name="it.unibas.codicefiscale.modello" level="debug"/>   
+    <logger name="it.unibas.codicefiscale.vista" level="debug"/> 
 
 </configuration>
