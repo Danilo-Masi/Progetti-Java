@@ -2,14 +2,19 @@ package it.unibas.ricettario.vista;
 
 import it.unibas.ricettario.Applicazione;
 import it.unibas.ricettario.modello.Costanti;
-import javax.swing.JComboBox;
+import it.unibas.ricettario.modello.Pietanza;
+import java.util.List;
 
 public class VistaPrincipale extends javax.swing.JPanel {
 
     public void inizializza() {
         initComponents();
+        //Richiama il metodo per inizializzare i componenti
         inizializzaComponenti();
+        //Richiama il metodo per inizializzare le azioni
         inizializzaAzioni();
+        //Setta il modello della tabella con la tabella creata
+        this.tabellaPietanze.setModel(new ModelloTabellaPietanze());
     }
 
     //Popola la comboBox
@@ -22,19 +27,32 @@ public class VistaPrincipale extends javax.swing.JPanel {
         this.comboCategoria.addItem(Costanti.DESSERT);
     }
 
+    //Inizializza le azioni
+    private void inizializzaAzioni() {
+        this.bottoneCercaCategorie.setAction(Applicazione.getInstance().getControlloPrincipale().getAzioneCerca());
+        this.bottoneCercaSimile.setAction(Applicazione.getInstance().getControlloPrincipale().getAzoneCercaPietanzaSimile());
+    }
+
     //Metodo per recuperare il valore selezionato nella comboBox
     public String getComboCategoria() {
         return this.comboCategoria.getSelectedItem().toString();
     }
 
-    //Inizializza le azioni
-    private void inizializzaAzioni() {
-        this.bottoneCercaCategorie.setAction(Applicazione.getInstance().getControlloPrincipale().getAzioneCerca());
+    //Metodo per recuperare l'indice della tabella selezionato
+    public int getRigaSelezionata() {
+        return this.tabellaPietanze.getSelectedRow();
     }
 
     //Metodo per forzare l'aggiornamento della tabella
     public void aggiornaTabella() {
-        /* CREARE LA TABELLA */
+        //Carico la lista delle pietanze
+        List<Pietanza> listaPietanze = (List<Pietanza>) Applicazione.getInstance().getModello().getBeans(Costanti.LISTA_FILTRATA);
+        //Prende il modello della tabella
+        ModelloTabellaPietanze modelloTabella = (ModelloTabellaPietanze) this.tabellaPietanze.getModel();
+        //Carica la lista nel modello della tabella
+        modelloTabella.setPietanze(listaPietanze);
+        //Forza l'aggiornamento del contenuto della tabella
+        modelloTabella.aggiornaContenuto();
     }
 
     @SuppressWarnings("unchecked")

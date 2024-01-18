@@ -32,10 +32,6 @@ public class Pietanza {
         return ingredienti;
     }
 
-    public void aggiungiIngrediente(Ingrediente e) {
-        ingredienti.add(e);
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -46,13 +42,28 @@ public class Pietanza {
         return sb.toString();
     }
 
-    //Funzione che restituisce le kcal di ogni pietanza
+    //Metodo per aggiungere un ingrediente alla lista degli ingredienti
+    public void aggiungiIngrediente(Ingrediente e) {
+        ingredienti.add(e);
+    }
+
+    //Metodo per restituire le kcal di ogni ingrediente 
     public double getKcal() {
         double somma = 0.0;
         for (Ingrediente ingrediente : ingredienti) {
             somma += ingrediente.getKcal();
         }
         return somma;
+    }
+
+    //Metodo per verificare quali ingredienti hanno allgergeni
+    public boolean contieneAllergeni() {
+        for (Ingrediente ingrediente : ingredienti) {
+            if (ingrediente.isAllergene()) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

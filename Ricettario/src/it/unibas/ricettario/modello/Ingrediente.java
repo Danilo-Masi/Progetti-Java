@@ -14,11 +14,6 @@ public class Ingrediente {
         this.kcal100gr = kcal100gr;
     }
 
-    //Calcola le kcal generali dell'ingrediente
-    public double getKcal() {
-        return this.quantita * this.kcal100gr / 100.0;
-    }
-
     public String getNome() {
         return nome;
     }
@@ -34,8 +29,6 @@ public class Ingrediente {
     public int getKcal100gr() {
         return kcal100gr;
     }
-    
-    
 
     @Override
     public String toString() {
@@ -45,6 +38,11 @@ public class Ingrediente {
         sb.append(", allergene=").append(allergene);
         sb.append(", kcal100gr=").append(kcal100gr);
         return sb.toString();
+    }
+
+    //Calcola le kcal in base alla quantità di prodotto inserita
+    public double getKcal() {
+        return this.quantita * this.kcal100gr / 100.0;
     }
 
 }

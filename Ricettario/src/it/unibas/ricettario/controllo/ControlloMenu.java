@@ -29,17 +29,18 @@ public class ControlloMenu {
         public void actionPerformed(ActionEvent e) {
             IDAOArchivio dAOArchivio = Applicazione.getInstance().getDaoArchivio();
             try {
-                //Carica i dati dell'archivio
+                //Carica i dati completi dell'archivio
                 Archivio archivio = dAOArchivio.carica("");
-                //Carica l'archivio nel modello
+                //Imposta i dati dell'archivio in una mappa del modello
                 Applicazione.getInstance().getModello().putBean(Costanti.ARCHIVIO, archivio);
+                //Messaggio di verifica
                 Applicazione.getInstance().getFrame().mostraMessagio("Caricato l'archivio contentente " + archivio.getPietanze().size() + " pietanze");
-                //Abilita il pulsante CERCA una volta che l'archivio è stato caricato nel modello
+                //Abilita i pulsanti delle azioni una volta che l'archivio è correttamente caricato
                 Applicazione.getInstance().getControlloPrincipale().getAzioneCerca().setEnabled(true);
+                Applicazione.getInstance().getControlloPrincipale().getAzoneCercaPietanzaSimile().setEnabled(true);
             } catch (DAOException ex) {
                 Applicazione.getInstance().getFrame().mostraMessaggioErrore("Impossibile caricare l'archivio " + ex.getMessage());
             }
-
         }
 
     }

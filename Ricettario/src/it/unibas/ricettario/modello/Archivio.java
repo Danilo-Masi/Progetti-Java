@@ -11,12 +11,13 @@ public class Archivio {
         return pietanze;
     }
 
-    //Funzione per aggiungere una pietanza alla lista delle pietanze
+    //Metodo per aggiungere una nuova pietanza alla lista delle pietanze
     public void aggiungiPietanza(Pietanza pietanza) {
         this.pietanze.add(pietanza);
     }
 
-    //Funzione per cercare una pietanza in base alla categoria
+    //Metodo per cercare le pietanze nella lista delle pietanze in base ad una 
+    //categoria selezionata dall'utente
     public List<Pietanza> cercaPietanzePerCategoria(String categoria) {
         List<Pietanza> listaPietanze = new ArrayList<>();
         for (Pietanza nuovaPietanza : this.pietanze) {
@@ -27,7 +28,8 @@ public class Archivio {
         return listaPietanze;
     }
 
-    //Funzione per cercare una pietanza simile a quella selezionata
+    //Metodo per cercare una pietanza simile (in base alla kcal) a quella
+    //selezionata dall'utente nella tabella 
     public Pietanza cercaPietanzaSimile(Pietanza pietanza) {
         Pietanza pietanzaSimile = null;
         for (Pietanza altraPietanza : this.pietanze) {
