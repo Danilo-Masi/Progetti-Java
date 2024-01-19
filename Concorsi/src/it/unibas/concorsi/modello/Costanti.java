@@ -10,5 +10,7 @@ public class Costanti {
     
     public static final String CRITERIO_DATA = "Criterio data";
     public static final String CRITERIO_POSTI = "Criterio posti";
+    
+    public static final String CONCORSO_SELEZIONATO = "Concorso selezionato";
 
 }

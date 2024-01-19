@@ -14,6 +14,33 @@ import javax.swing.KeyStroke;
 public class ControlloPrincipale {
 
     private Action azioneCerca = new AzioneCerca();
+    private Action azioneSelezionaConcorso = new AzioneSelezionaConcorso();
+
+    private class AzioneSelezionaConcorso extends AbstractAction {
+
+        private AzioneSelezionaConcorso() {
+            this.putValue(NAME, "Seleziona");
+            this.putValue(SHORT_DESCRIPTION, "Seleziona concorso");
+            this.putValue(MNEMONIC_KEY, KeyEvent.VK_O);
+            this.putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke("ctrl alt O"));
+            this.setEnabled(false);
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            List<Concorso> listaFiltrata = (List<Concorso>) Applicazione.getInstance().getModello().getBeans(Costanti.LISTA_FILTRATA);
+            int rigaSelezionata = Applicazione.getInstance().getVistaPrincipale().getRigaSelezionata();
+            if (rigaSelezionata == -1) {
+                Applicazione.getInstance().getFrame().mostraMessaggioErrore("Nessun corso selezionato");
+                return;
+            }
+            Concorso concorsoSelezionato = listaFiltrata.get(rigaSelezionata);
+            Applicazione.getInstance().getModello().putBeans(Costanti.CONCORSO_SELEZIONATO, concorsoSelezionato);
+            Applicazione.getInstance().getVistaDettagliConcorso().visualizza();
+
+        }
+
+    }
 
     private class AzioneCerca extends AbstractAction {
 
@@ -22,6 +49,7 @@ public class ControlloPrincipale {
             this.putValue(SHORT_DESCRIPTION, "Cerca");
             this.putValue(MNEMONIC_KEY, KeyEvent.VK_J);
             this.putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke("ctrl alt J"));
+            this.setEnabled(false);
         }
 
         @Override
@@ -43,6 +71,10 @@ public class ControlloPrincipale {
             Applicazione.getInstance().getVistaPrincipale().aggiornaTabella();
         }
 
+    }
+
+    public Action getAzioneSelezionaConcorso() {
+        return azioneSelezionaConcorso;
     }
 
     public Action getAzioneCerca() {

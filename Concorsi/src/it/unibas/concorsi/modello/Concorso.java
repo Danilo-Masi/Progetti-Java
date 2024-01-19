@@ -85,4 +85,13 @@ public class Concorso {
         this.domande.add(e);
     }
 
+    public boolean isContieneDomanda(String codiceFiscale) {
+        for (Domanda domanda : domande) {
+            if (domanda.getCodiceFiscaleRichiedente().equalsIgnoreCase(codiceFiscale)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

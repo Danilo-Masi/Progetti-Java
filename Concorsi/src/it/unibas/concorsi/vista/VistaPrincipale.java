@@ -1,18 +1,24 @@
 package it.unibas.concorsi.vista;
 
 import it.unibas.concorsi.Applicazione;
+import it.unibas.concorsi.modello.Concorso;
+import it.unibas.concorsi.modello.Costanti;
+import java.util.List;
 
 public class VistaPrincipale extends javax.swing.JPanel {
-
+    
     public void inizializza() {
         initComponents();
         inizializzaAzioni();
+        this.tabellaConcorsi.setModel(new ModelloTabellaConcorsi());
     }
-
+    
     private void inizializzaAzioni() {
+        this.campoRegione.setAction(Applicazione.getInstance().getControlloPrincipale().getAzioneCerca());
         this.bottoneCerca.setAction(Applicazione.getInstance().getControlloPrincipale().getAzioneCerca());
+        this.bottoneSeleziona.setAction(Applicazione.getInstance().getControlloPrincipale().getAzioneSelezionaConcorso());
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -117,8 +123,8 @@ public class VistaPrincipale extends javax.swing.JPanel {
                 .addGap(20, 20, 20)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 399, Short.MAX_VALUE)
-                .addGap(20, 20, 20)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(bottoneSeleziona)
                 .addGap(20, 20, 20))
         );
@@ -138,17 +144,24 @@ public class VistaPrincipale extends javax.swing.JPanel {
     public String getRegione() {
         return this.campoRegione.getText();
     }
-
+    
     public boolean isOrdinamentoData() {
         return this.radioOrdinamentoData.isSelected();
     }
-
+    
     public boolean isOridiamentoPosti() {
         return this.radioOrdinamentoPosti.isSelected();
     }
-
+    
     public void aggiornaTabella() {
-        /* AGGIORNARE LA TABELLA */
+        List<Concorso> listaConcorsi = (List<Concorso>) Applicazione.getInstance().getModello().getBeans(Costanti.LISTA_FILTRATA);
+        ModelloTabellaConcorsi modelloTabella = (ModelloTabellaConcorsi) this.tabellaConcorsi.getModel();
+        modelloTabella.setListaConcorsi(listaConcorsi);
+        modelloTabella.aggiornaContenuto();
     }
-
+    
+    public int getRigaSelezionata() {
+        return this.tabellaConcorsi.getSelectedRow();
+    }
+    
 }
