@@ -1,10 +1,13 @@
 package it.unibas.ingressiaule;
 
+import it.unibas.ingressiaule.controllo.ControlloDettagliAula;
 import it.unibas.ingressiaule.controllo.ControlloMenu;
 import it.unibas.ingressiaule.controllo.ControlloPrincipale;
+import it.unibas.ingressiaule.modello.Modello;
 import it.unibas.ingressiaule.persistenza.DAOArchivioMock;
 import it.unibas.ingressiaule.persistenza.IDAOArchivio;
 import it.unibas.ingressiaule.vista.Frame;
+import it.unibas.ingressiaule.vista.VistaDettagliAula;
 import it.unibas.ingressiaule.vista.VistaPrincipale;
 import javax.swing.SwingUtilities;
 
@@ -24,6 +27,9 @@ public class Applicazione {
     private ControlloPrincipale controlloPrincipale;
     private Frame frame;
     private VistaPrincipale vistaPrincipale;
+    private Modello modello;
+    private VistaDettagliAula vistaDettagliAula;
+    private ControlloDettagliAula controlloDettagliAula;
 
     private void inizializza() {
         this.daoArchivio = new DAOArchivioMock();
@@ -31,9 +37,13 @@ public class Applicazione {
         this.controlloPrincipale = new ControlloPrincipale();
         this.frame = new Frame();
         this.vistaPrincipale = new VistaPrincipale();
+        this.modello = new Modello();
+        this.vistaDettagliAula = new VistaDettagliAula(frame, true);
+        this.controlloDettagliAula = new ControlloDettagliAula();
         //Avvia
         this.frame.inizializza();
         this.vistaPrincipale.inizializza();
+        this.vistaDettagliAula.inizializza();
     }
 
     public IDAOArchivio getDaoArchivio() {
@@ -74,6 +84,18 @@ public class Applicazione {
 
     public void setVistaPrincipale(VistaPrincipale vistaPrincipale) {
         this.vistaPrincipale = vistaPrincipale;
+    }
+
+    public Modello getModello() {
+        return modello;
+    }
+
+    public VistaDettagliAula getVistaDettagliAula() {
+        return vistaDettagliAula;
+    }
+
+    public ControlloDettagliAula getControlloDettagliAula() {
+        return controlloDettagliAula;
     }
 
     public static void main(String[] args) {

@@ -14,9 +14,9 @@ public class DAOArchivioMock implements IDAOArchivio {
         Archivio archivio = new Archivio();
 
         Aula aula1 = new Aula("AA33", "Aula Fibonacci", 1);
-        Calendar dataAccesso1 = new GregorianCalendar(2020, Calendar.APRIL, 28);
+        Calendar dataAccesso1 = new GregorianCalendar(2020, Calendar.APRIL, 2, 10, 30, 22);
         aula1.addAccesso(new Accesso("DM603", "Danilo Masi", 177, Costanti.LEZIONE, dataAccesso1));
-        Calendar dataAccesso2 = new GregorianCalendar(2020, Calendar.MAY, 2);
+        Calendar dataAccesso2 = new GregorianCalendar(2020, Calendar.MAY, 22, 8, 19, 0);
         aula1.addAccesso(new Accesso("MM78", "Martin Garriz", 7, Costanti.ESAME, dataAccesso2));
         archivio.addAula(aula1);
 

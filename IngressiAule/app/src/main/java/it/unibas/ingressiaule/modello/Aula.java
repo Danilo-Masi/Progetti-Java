@@ -3,7 +3,7 @@ package it.unibas.ingressiaule.modello;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Aula {
+public class Aula implements Comparable<Aula>{
 
     private String codice;
     private String nomeAula;
@@ -51,6 +51,11 @@ public class Aula {
     //Metodo per aggiungere un accesso alla lista
     public void addAccesso(Accesso accesso) {
         this.listaAccessi.add(accesso);
+    }
+
+    @Override
+    public int compareTo(Aula o) {
+        return this.getNomeAula().compareTo(o.getNomeAula());
     }
 
 }
