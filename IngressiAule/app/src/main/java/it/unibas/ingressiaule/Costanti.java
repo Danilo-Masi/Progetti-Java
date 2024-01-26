@@ -9,5 +9,6 @@ public class Costanti {
     public static final String ARCHIVIO = "Archivio";
     public static final String LISTA_FILTRATA = "lista filtrata";
     public static final String AULA_SELEZIONATA = "Aula selezionata";
+    public static final String DATI_MESE = "Dati mese";
 
 }

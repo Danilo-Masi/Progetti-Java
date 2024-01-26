@@ -8,8 +8,8 @@ import it.unibas.ingressiaule.vista.VistaDettagliAula;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.List;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.KeyStroke;
@@ -74,54 +74,28 @@ public class ControlloDettagliAula {
             } else {
                 try {
                     int permanenzaIntero = Integer.parseInt(permanenza);
+                    if (permanenzaIntero < 0) {
+                        errori.append("La permanenza deve essere maggiore di 0 \n");
+                    }
                 } catch (NumberFormatException e) {
                     errori.append("Il campo permanenza deve essere un intero \n");
                 }
             }
-            if (anno.trim().isEmpty()) {
-                errori.append("Il campo anno è obbligatorio \n");
-            } else {
-                try {
-                    int annoIntero = Integer.parseInt(anno);
-                } catch (NumberFormatException e) {
-                    errori.append("Il campo anno deve essere un intero \n");
+            try {
+                int interoGiorno = Integer.parseInt(giorno);
+                int interoMese = Integer.parseInt(mese);
+                int interoAnno = Integer.parseInt(anno);
+                int interoOra = Integer.parseInt(ora);
+                int interoMinuti = Integer.parseInt(minuti);
+                Calendar calendar = new GregorianCalendar(interoAnno, interoMese, interoGiorno, interoOra, interoMinuti);
+                calendar.setLenient(false);
+                Date data = calendar.getTime();
+                Date dataAttuale = new Date();
+                if (data.after(dataAttuale)) {
+                    errori.append("La data di accesso non è valida \n");
                 }
-            }
-            if (mese.trim().isEmpty()) {
-                errori.append("Il campo mese è obbligatorio \n");
-            } else {
-                try {
-                    int meseIntero = Integer.parseInt(mese);
-                } catch (NumberFormatException e) {
-                    errori.append("Il campo mese deve essere un intero \n");
-                }
-            }
-            if (giorno.trim().isEmpty()) {
-                errori.append("Il campo giorno è obbligatorio \n");
-            } else {
-                try {
-                    int giornoIntero = Integer.parseInt(giorno);
-                } catch (NumberFormatException e) {
-                    errori.append("Il campo giorno deve essere un intero \n");
-                }
-            }
-            if (ora.trim().isEmpty()) {
-                errori.append("Il campo ora è obbligatorio \n");
-            } else {
-                try {
-                    int oraIntero = Integer.parseInt(ora);
-                } catch (NumberFormatException e) {
-                    errori.append("Il campo ora deve essere un intero \n");
-                }
-            }
-            if (minuti.trim().isEmpty()) {
-                errori.append("Il campo minuti è obbligatorio \n");
-            } else {
-                try {
-                    int minutiIntero = Integer.parseInt(minuti);
-                } catch (NumberFormatException e) {
-                    errori.append("Il campo minuti deve essere un intero \n");
-                }
+            } catch (Exception e) {
+                errori.append("la data non è corretta \n");
             }
             return errori.toString();
         }

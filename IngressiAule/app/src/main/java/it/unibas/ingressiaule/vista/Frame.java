@@ -18,6 +18,8 @@ public class Frame extends javax.swing.JFrame {
     private void inizializzaAzioni() {
         this.menuEsci.setAction(Applicazione.getInstance().getControlloMenu().getAzioneEsci());
         this.menuCarica.setAction(Applicazione.getInstance().getControlloMenu().getAzioneCarica());
+        this.menuVerifica.setAction(Applicazione.getInstance().getControlloMenu().getAzioneVerifica());
+        this.menuCalcola.setAction(Applicazione.getInstance().getControlloMenu().getAzioneCalcolaMesiFrequenti());
     }
 
     public void mostraMessaggio(String messaggio) {
@@ -35,6 +37,8 @@ public class Frame extends javax.swing.JFrame {
         javax.swing.JMenuBar jMenuBar1 = new javax.swing.JMenuBar();
         javax.swing.JMenu jMenu1 = new javax.swing.JMenu();
         menuCarica = new javax.swing.JMenuItem();
+        menuCalcola = new javax.swing.JMenuItem();
+        menuVerifica = new javax.swing.JMenuItem();
         menuEsci = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -43,6 +47,12 @@ public class Frame extends javax.swing.JFrame {
 
         menuCarica.setText("jMenuItem1");
         jMenu1.add(menuCarica);
+
+        menuCalcola.setText("jMenuItem1");
+        jMenu1.add(menuCalcola);
+
+        menuVerifica.setText("jMenuItem1");
+        jMenu1.add(menuVerifica);
 
         menuEsci.setText("jMenuItem2");
         jMenu1.add(menuEsci);
@@ -67,7 +77,9 @@ public class Frame extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem menuCalcola;
     private javax.swing.JMenuItem menuCarica;
     private javax.swing.JMenuItem menuEsci;
+    private javax.swing.JMenuItem menuVerifica;
     // End of variables declaration//GEN-END:variables
 }
