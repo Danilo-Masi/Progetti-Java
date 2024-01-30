@@ -2,9 +2,11 @@ package it.unibas.appfilm.vista;
 
 import it.unibas.appfilm.Applicazione;
 import it.unibas.appfilm.Costanti;
+import it.unibas.appfilm.modello.Archivio;
+import it.unibas.appfilm.modello.DatiFilm;
 import it.unibas.appfilm.modello.Film;
-import static java.awt.SystemColor.text;
 import java.text.DateFormat;
+import java.util.List;
 
 public class VistaDettagliFilm extends javax.swing.JDialog {
 
@@ -31,8 +33,11 @@ public class VistaDettagliFilm extends javax.swing.JDialog {
         this.labelDataUscita.setText(df.format(film.getDataUscita().getTime()));
         this.labelRegista.setText(film.getRegista());
         this.labelGenere.setText(film.getGenere());
+        //Aggirno tabella
+        Archivio archivio = (Archivio) Applicazione.getInstance().getModello().getBeans(Costanti.ARCHIVIO);
         ModelloTabellaAttori modelloTabellaAttori = (ModelloTabellaAttori) this.tabellaDettagliFilm.getModel();
-        modelloTabellaAttori.setAttori(film.getListaAttori());
+        List<DatiFilm> listaDatiFilm = archivio.calcolaAttoriPerNazionalita(film.getListaAttori());
+        modelloTabellaAttori.setListaDatiFilm(listaDatiFilm);
         modelloTabellaAttori.aggiornaTabella();
     }
 

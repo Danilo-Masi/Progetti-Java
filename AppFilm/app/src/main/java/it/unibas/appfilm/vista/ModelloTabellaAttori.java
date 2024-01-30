@@ -1,71 +1,57 @@
 package it.unibas.appfilm.vista;
 
-import it.unibas.appfilm.modello.Attore;
+import it.unibas.appfilm.modello.DatiFilm;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
 public class ModelloTabellaAttori extends AbstractTableModel {
 
-    List<Attore> attori = new ArrayList<>();
+    List<DatiFilm> listaDatiFilm = new ArrayList<>();
 
-    public List<Attore> getAttori() {
-        return attori;
+    public List<DatiFilm> getListaDatiFilm() {
+        return listaDatiFilm;
     }
 
-    public void setAttori(List<Attore> attori) {
-        this.attori = attori;
+    public void setListaDatiFilm(List<DatiFilm> listaDatiFilm) {
+        this.listaDatiFilm = listaDatiFilm;
+    }
+
+    public void aggiornaTabella() {
+        this.fireTableDataChanged();
     }
 
     @Override
     public int getRowCount() {
-        return this.attori.size();
+        return listaDatiFilm.size();
     }
 
     @Override
     public int getColumnCount() {
-        return 3;
+        return 2;
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Attore attore = this.attori.get(rowIndex);
+        DatiFilm datiFilm = this.listaDatiFilm.get(rowIndex);
         if (columnIndex == 0) {
-            return attore.getNomeECognome();
+            return datiFilm.getNazione();
         }
         if (columnIndex == 1) {
-            return attore.getNazionalita();
-        }
-        if (columnIndex == 2) {
-            return attore.getDataNascita();
+            return datiFilm.getNumeroAttori();
         }
         return "";
-    }
-
-    @Override
-    public Class<?> getColumnClass(int columnIndex) {
-        if (columnIndex == 2) {
-            return Integer.class;
-        }
-        return String.class;
     }
 
     @Override
     public String getColumnName(int column) {
         if (column == 0) {
-            return "Nome e cognome";
+            return "Nazione";
         }
         if (column == 1) {
-            return "Nazionalità";
-        }
-        if (column == 2) {
-            return "Anno di nascita";
+            return "Numero Attori";
         }
         return "";
-    }
-
-    public void aggiornaTabella() {
-        this.fireTableDataChanged();
     }
 
 }
