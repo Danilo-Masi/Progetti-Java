@@ -10,16 +10,16 @@ Questi progetti sono frutto di esercitazioni didattiche condotte durante il cors
 
 ## Lista dei progetti
 
-| Progetti | Descrizione |
-|----------| ----------- |
-| Codice fiscale | Calcolo del codice fiscale |
-| Ricettario | Ricerca e aggiunta di ricette nel sistema |
-| Concorsi | Ricerca e aggiunta di concorsi nel sistema |
-| Comuni | Ricerca e aggiunta di comuni nel sistema |
-| Ingressi aule | Ricerca e aggiunta di ingressi nel sistema |
-| Agenzia viaggi | Ricerca e aggiunta di viaggi nel sistema |
-| App film | Ricerca e aggiunta di film nel sistema |
-| Sistema istituti | Ricerca e aggiunta di istituti nel sistema|
+| Indice | Progetti | Descrizione |
+|--------|----------| ----------- |
+| 01 | Codice fiscale | Calcolo del codice fiscale |
+| 02 | Ricettario | Ricerca e aggiunta di ricette nel sistema |
+| 03 | Concorsi | Ricerca e aggiunta di concorsi nel sistema |
+| 04 | Comuni | Ricerca e aggiunta di comuni nel sistema |
+| 05 | Ingressi aule | Ricerca e aggiunta di ingressi nel sistema |
+| 06 | Agenzia viaggi | Ricerca e aggiunta di viaggi nel sistema |
+| 07 | App film | Ricerca e aggiunta di film nel sistema |
+| 08 | Sistema istituti | Ricerca e aggiunta di istituti nel sistema|
 
 
 
