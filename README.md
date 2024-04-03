@@ -4,22 +4,16 @@ Here you can explore a diverse collection of projects implemented in Java follow
 
 These projects stem from educational exercises conducted during the university course on Object-Oriented Programming 1 at the University of Basilicata.
 
-Qui puoi esplorare una variegata raccolta di progetti implementati in Java seguendo l'architettura MVC. Per la creazione delle interfacce grafiche, abbiamo utilizzato il framework Swing. La costruzione di questi progetti è stata gestita con agilità, utilizzando sia il sistema Ant che Gradle a seconda delle esigenze specifiche. Oltre a ciò, troverai l'implementazione di librerie specializzate importate nei progetti, coprendo ambiti come la creazione di test, la gestione di stringhe di logging e lo sviluppo dell'applicazione stessa.
+## Project list
 
-Questi progetti sono frutto di esercitazioni didattiche condotte durante il corso universitario di Programmazione ad Oggetti 1 presso l'Università degli Studi della Basilicata.
-
-## Lista dei progetti
-
-| Indice | Progetti | Descrizione |
-|--------|----------| ----------- |
-| 01 | Codice fiscale | Calcolo del codice fiscale |
-| 02 | Ricettario | Ricerca e aggiunta di ricette nel sistema |
-| 03 | Concorsi | Ricerca e aggiunta di concorsi nel sistema |
-| 04 | Comuni | Ricerca e aggiunta di comuni nel sistema |
-| 05 | Ingressi aule | Ricerca e aggiunta di ingressi nel sistema |
-| 06 | Agenzia viaggi | Ricerca e aggiunta di viaggi nel sistema |
-| 07 | App film | Ricerca e aggiunta di film nel sistema |
-| 08 | Sistema istituti | Ricerca e aggiunta di istituti nel sistema|
-
-
-
+| Index | Projects        | Description                                        |
+|-------|-----------------|----------------------------------------------------|
+|   01  | CodiceFiscale   | Calculation of the fiscal code                     |
+|   02  | Ricettario      | Search and add recipes to the system               |
+|   03  | Concorsi        | Search and add contests to the system              |
+|   04  | Comuni          | Search and add municipalities to the system        |
+|   05  | IngressiAule    | Search and add entries to the system               |
+|   06  | AgenziaViaggi   | Search and add travels to the system               |
+|   07  | AppFilm         | Search and add movies to the system                |
+|   08  | SistemaIstituti | Search and add institutes to the system            |
+|   09  | Mastermind      | The user tries to guess the generated number       |

@@ -4,6 +4,16 @@ public class Combinazione {
 
     private int[] cifre = new int[Costanti.CIFRE_COMBINAZIONE];
 
+    public Combinazione() {
+    }
+
+    public Combinazione(int c1, int c2, int c3, int c4) {
+        setCifraPosizione(c1, 0);
+        setCifraPosizione(c2, 1);
+        setCifraPosizione(c3, 2);
+        setCifraPosizione(c4, 3);
+    }
+
     public int getCifraPosizione(int posizione) {
         if (posizione < 0 || posizione >= Costanti.CIFRE_COMBINAZIONE) {
             throw new IllegalArgumentException("Posizione scorretta");
