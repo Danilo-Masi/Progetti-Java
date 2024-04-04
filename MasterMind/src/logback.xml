@@ -5,11 +5,10 @@
         </encoder>
     </appender>
 
-    <root level="debug">
+    <root level="info">
         <appender-ref ref="STDOUT" />
     </root>
   
-    <logger name="it.unibas.mastermind.modello" level="debug"/>   
-    <logger name="it.unibas.mastermind.vista" level="debug"/> 
-
+    <!--<logger name="it.unibas.mastermind.modello" level="debug" />-->
+    
 </configuration>
