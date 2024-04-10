@@ -34,6 +34,8 @@ public class ControlloMenu {
                 Applicazione.getInstance().getModello().putBeans(Costanti.ARCHIVIO, archivio);
                 Applicazione.getInstance().getFrame().mostraMessaggio("Archivio caricato correttamente");
                 //Abilita e disabilita azioni
+                Applicazione.getInstance().getControlloPrincipale().getAzioneCercaAgenzie().setEnabled(true);
+                Applicazione.getInstance().getControlloPrincipale().getAzioneMostraDettagli().setEnabled(true);
             } catch (DAOException daoE) {
                 Applicazione.getInstance().getFrame().mostraMessaggioErrore("Errore nel caricamento dell'archivio " + daoE);
             }

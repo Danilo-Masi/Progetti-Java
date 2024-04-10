@@ -1,9 +1,40 @@
 package it.unibas.travelagency.vista;
 
+import it.unibas.travelagency.Applicazione;
+import it.unibas.travelagency.modello.Agenzia;
+import it.unibas.travelagency.modello.Costanti;
+import java.util.List;
+
 public class VistaPrincipale extends javax.swing.JPanel {
 
     public void inizializza() {
         initComponents();
+        inizializzaAzioni();
+        this.tabellaAgenzie.setModel(new ModelloTabellaAgenzie());
+    }
+
+    private void inizializzaAzioni() {
+        this.bottoneCerca.setAction(Applicazione.getInstance().getControlloPrincipale().getAzioneCercaAgenzie());
+        this.bottoneMostraDettagli.setAction(Applicazione.getInstance().getControlloPrincipale().getAzioneMostraDettagli());
+    }
+
+    public int getRigaSelezionata() {
+        return this.tabellaAgenzie.getSelectedRow();
+    }
+
+    public String getValoreCitta() {
+        return this.campoCitta.getText();
+    }
+
+    public boolean getOrdinamentoCrescente() {
+        return this.radioCrescente.isSelected();
+    }
+
+    public void aggiornaTabella() {
+        List<Agenzia> listaAgenzie = (List<Agenzia>) Applicazione.getInstance().getModello().getBeans(Costanti.LISTA_FILTRATA);
+        ModelloTabellaAgenzie modelloTabellaAgenzie = (ModelloTabellaAgenzie) this.tabellaAgenzie.getModel();
+        modelloTabellaAgenzie.setListaAgenzie(listaAgenzie);
+        modelloTabellaAgenzie.aggiornaTabella();
     }
 
     @SuppressWarnings("unchecked")
@@ -19,6 +50,7 @@ public class VistaPrincipale extends javax.swing.JPanel {
         bottoneCerca = new javax.swing.JButton();
         javax.swing.JScrollPane jScrollPane1 = new javax.swing.JScrollPane();
         tabellaAgenzie = new javax.swing.JTable();
+        bottoneMostraDettagli = new javax.swing.JButton();
 
         jLabel1.setText("Scegli città:");
 
@@ -46,26 +78,33 @@ public class VistaPrincipale extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tabellaAgenzie);
 
+        bottoneMostraDettagli.setText("jButton1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bottoneCerca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bottoneMostraDettagli, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bottoneCerca, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(radioCrescente, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(20, 20, 20)
-                                .addComponent(radioDecrescente))
-                            .addComponent(campoCitta, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(radioCrescente, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(20, 20, 20)
+                                        .addComponent(radioDecrescente))
+                                    .addComponent(campoCitta, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
                 .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
@@ -83,7 +122,9 @@ public class VistaPrincipale extends javax.swing.JPanel {
                 .addGap(20, 20, 20)
                 .addComponent(bottoneCerca, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(bottoneMostraDettagli)
                 .addGap(20, 20, 20))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -91,6 +132,7 @@ public class VistaPrincipale extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bottoneCerca;
+    private javax.swing.JButton bottoneMostraDettagli;
     private javax.swing.JTextField campoCitta;
     private javax.swing.JRadioButton radioCrescente;
     private javax.swing.JRadioButton radioDecrescente;

@@ -13,16 +13,16 @@ public class DAOArchivioMock implements IDAOArchivio {
     public Archivio carica(String nomeFile) throws DAOException{
         Archivio archivio = new Archivio();
 
-        Agenzia agenzia1 = new Agenzia("AG01", "Travel Venusia", "Lavello", true);
+        Agenzia agenzia1 = new Agenzia("AG01", "ATravel Venusia", "Milano", true);
         Calendar dataPartenza1 = new GregorianCalendar(2024, Calendar.APRIL, 26);
         Pacchetto pacchetto1 = new Pacchetto("siviglia", 1200.00, dataPartenza1, 6, Costanti.TIPOLOGIA_CITTA);
         agenzia1.aggiungiPacchetto(pacchetto1);
         archivio.aggiungiAgenzia(agenzia1);
 
-        Agenzia agenzia2 = new Agenzia("AG02", "Meeeeghee", "MIlano", false);
+        Agenzia agenzia2 = new Agenzia("AG02", "Meeeeghee", "Milano", false);
         Calendar dataPartenza2 = new GregorianCalendar(2024, Calendar.JULY, 10);
         Pacchetto pacchetto2 = new Pacchetto("Sardegna", 675.34, dataPartenza2, 10, Costanti.TIPOLOGIA_VILLAGGIO);
-        agenzia1.aggiungiPacchetto(pacchetto2);
+        agenzia2.aggiungiPacchetto(pacchetto2);
         archivio.aggiungiAgenzia(agenzia2);
 
         return archivio;

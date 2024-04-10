@@ -1,11 +1,13 @@
 package it.unibas.travelagency;
 
+import it.unibas.travelagency.controllo.ControlloDettagliConcorso;
 import it.unibas.travelagency.controllo.ControlloMenu;
 import it.unibas.travelagency.controllo.ControlloPrincipale;
 import it.unibas.travelagency.modello.Modello;
 import it.unibas.travelagency.persistenza.DAOArchivioMock;
 import it.unibas.travelagency.persistenza.IDAOArchivio;
 import it.unibas.travelagency.vista.Frame;
+import it.unibas.travelagency.vista.VistaDettagliAgenzia;
 import it.unibas.travelagency.vista.VistaPrincipale;
 import javax.swing.SwingUtilities;
 
@@ -26,6 +28,8 @@ public class Applicazione {
     private IDAOArchivio dAOArchivio;
     private Frame frame;
     private VistaPrincipale vistaPrincipale;
+    private VistaDettagliAgenzia vistaDettagliAgenzia;
+    private ControlloDettagliConcorso controlloDettagliConcorso;
 
     private void inizializza() {
         this.controlloMenu = new ControlloMenu();
@@ -34,7 +38,10 @@ public class Applicazione {
         this.dAOArchivio = new DAOArchivioMock();
         this.frame = new Frame();
         this.vistaPrincipale = new VistaPrincipale();
+        this.vistaDettagliAgenzia = new VistaDettagliAgenzia(frame, true);
+        this.controlloDettagliConcorso = new ControlloDettagliConcorso();
         //Inizializzazione
+        this.vistaDettagliAgenzia.inizializza();
         this.vistaPrincipale.inizializza();
         this.frame.inizializza();
     }
@@ -61,6 +68,10 @@ public class Applicazione {
 
     public VistaPrincipale getVistaPrincipale() {
         return vistaPrincipale;
+    }
+
+    public VistaDettagliAgenzia getVistaDettagliAgenzia() {
+        return vistaDettagliAgenzia;
     }
 
     public static void main(String[] args) {
