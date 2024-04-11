@@ -22,6 +22,8 @@ public class Archivio {
         this.listaAgenzie.add(agenzia);
     }
 
+    //Metodo che ricerca le agenzie per una determinata città e le visualizza in base al
+    //criterio d'ordinamento passatagli
     public List<Agenzia> cercaAgenziaPerCitta(String citta, String criterio) {
         List<Agenzia> listaFiltrata = new ArrayList<>();
         for (Agenzia agenzia : listaAgenzie) {
@@ -36,7 +38,10 @@ public class Archivio {
         }
         return listaFiltrata;
     }
-    
+
+    //Metodo che preleva la mappa con i pacchi ordinati per tipologia e con data più vicina
+    //li ordina in base alla data crescente e li immette in una lista che sarà poi visualizzata
+    //nel tabellaPacchetti
     public List<Pacchetto> pacchettiTabellaDettagli(List<Pacchetto> listaPacchetti) {
         // Lista per i pacchetti da visualizzare nei dettagli della tabella
         List<Pacchetto> listaPacchettiTabellaDettagli = new ArrayList<>();
@@ -49,10 +54,12 @@ public class Archivio {
             // Aggiunge il pacchetto (valore dell'entry) alla lista dei pacchetti per la tabella dei dettagli
             listaPacchettiTabellaDettagli.add(entry.getValue());
         }
+        Collections.sort(listaPacchettiTabellaDettagli, new ComparatorePacchettiData());
         // Restituisce la lista completa dei pacchetti per la tabella dei dettagli
         return listaPacchettiTabellaDettagli;
     }
 
+    //Metodo che raggruppa i pacchetti viaggio in base alla loro tipologia (CITTA, VILLAGGIO, CROCIERA)
     public Map<String, List<Pacchetto>> listaPacchettiPerTipologia(List<Pacchetto> listaPacchetti) {
         // Crea una mappa per memorizzare le liste di pacchetti divisi per tipologia.
         Map<String, List<Pacchetto>> mappaPerTipologie = new HashMap<>();
@@ -71,6 +78,8 @@ public class Archivio {
         return mappaPerTipologie;
     }
 
+    //Metodo che prende i pacchetti raggruppati in base alla loro tipologia e per ogni tipologia prende il pacchetto
+    //piu vicino possibile alla data odierna
     public Map<String, Pacchetto> cercaPacchettiVicini(Map<String, List<Pacchetto>> mappaPerTipologia) {
         // Crea una mappa per memorizzare il pacchetto più vicino per ogni tipologia.
         Map<String, Pacchetto> pacchettiPiùVicini = new HashMap<>();
@@ -103,6 +112,52 @@ public class Archivio {
         }
         // Restituisce la mappa dei pacchetti più vicini per tipologia.
         return pacchettiPiùVicini;
+    }
+    
+    //Metodo che verifica se in tutto l'archivio ci sono pacchetti che iniziano in un mese
+    //e finiscono in un altro
+    public boolean verificaArchivio() {
+        boolean verifica = false;
+        for (Agenzia agenzia : listaAgenzie) {
+            List<Pacchetto> listaPacchetti = agenzia.getListaPacchetti();
+            for (Pacchetto pacchetto : listaPacchetti) {
+                int giornoPartenza = pacchetto.getDataPartenza().get(Calendar.DAY_OF_MONTH);
+                int durataViaggio = pacchetto.getDurata();
+                int valoreGiorno = giornoPartenza + durataViaggio;
+                int mesePartenza = pacchetto.getDataPartenza().get(Calendar.MONTH);
+                int durataMese = verificaGiorniMese(mesePartenza);
+                if (valoreGiorno > durataMese) {
+                    verifica = true;
+                }
+            }
+        }
+        return verifica;
+    }
+    
+    //Metodo per impostare quanti giorni contiene un mese
+    private int verificaGiorniMese(int mese) {
+        int giorniMese;
+        switch (mese) {
+            case 0:
+            case 2:
+            case 4:
+            case 6:
+            case 7:
+            case 9:
+            case 11:
+                giorniMese = 31;
+                break;
+            case 3:
+            case 5:
+            case 8:
+            case 10:
+                giorniMese = 30;
+                break;
+            default:
+                giorniMese = 28;
+                break;
+        }
+        return giorniMese;
     }
 
 }

@@ -1,6 +1,6 @@
 package it.unibas.travelagency;
 
-import it.unibas.travelagency.controllo.ControlloDettagliConcorso;
+import it.unibas.travelagency.controllo.ControlloDettagliAgenzia;
 import it.unibas.travelagency.controllo.ControlloMenu;
 import it.unibas.travelagency.controllo.ControlloPrincipale;
 import it.unibas.travelagency.modello.Modello;
@@ -29,7 +29,7 @@ public class Applicazione {
     private Frame frame;
     private VistaPrincipale vistaPrincipale;
     private VistaDettagliAgenzia vistaDettagliAgenzia;
-    private ControlloDettagliConcorso controlloDettagliConcorso;
+    private ControlloDettagliAgenzia controlloDettagliAgenzia;
 
     private void inizializza() {
         this.controlloMenu = new ControlloMenu();
@@ -39,7 +39,7 @@ public class Applicazione {
         this.frame = new Frame();
         this.vistaPrincipale = new VistaPrincipale();
         this.vistaDettagliAgenzia = new VistaDettagliAgenzia(frame, true);
-        this.controlloDettagliConcorso = new ControlloDettagliConcorso();
+        this.controlloDettagliAgenzia = new ControlloDettagliAgenzia();
         //Inizializzazione
         this.vistaDettagliAgenzia.inizializza();
         this.vistaPrincipale.inizializza();
@@ -72,6 +72,10 @@ public class Applicazione {
 
     public VistaDettagliAgenzia getVistaDettagliAgenzia() {
         return vistaDettagliAgenzia;
+    }
+
+    public ControlloDettagliAgenzia getControlloDettagliAgenzia() {
+        return controlloDettagliAgenzia;
     }
 
     public static void main(String[] args) {

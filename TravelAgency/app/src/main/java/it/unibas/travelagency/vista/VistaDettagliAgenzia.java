@@ -5,8 +5,9 @@ import it.unibas.travelagency.modello.Agenzia;
 import it.unibas.travelagency.modello.Archivio;
 import it.unibas.travelagency.modello.Costanti;
 import it.unibas.travelagency.modello.Pacchetto;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
-import java.util.Map;
 
 public class VistaDettagliAgenzia extends javax.swing.JDialog {
 
@@ -16,7 +17,21 @@ public class VistaDettagliAgenzia extends javax.swing.JDialog {
 
     public void inizializza() {
         initComponents();
+        inizializzaComponenti();
+        inizializzaAzioni();
         this.tabellaPacchetti.setModel(new ModelloTabellaPacchetti());
+    }
+
+    private void inizializzaAzioni() {
+        this.bottoneAggiungiPacchetto.setAction(Applicazione.getInstance().getControlloDettagliAgenzia().getAzioneAggiungiNuovoPacchetto());
+    }
+
+    private void inizializzaComponenti() {
+        this.comboTipologia.removeAllItems();
+        this.comboTipologia.addItem("");
+        this.comboTipologia.addItem(Costanti.TIPOLOGIA_CITTA);
+        this.comboTipologia.addItem(Costanti.TIPOLOGIA_CROCIERA);
+        this.comboTipologia.addItem(Costanti.TIPOLOGIA_VILLAGGIO);
     }
 
     public void visualizza() {
@@ -25,7 +40,7 @@ public class VistaDettagliAgenzia extends javax.swing.JDialog {
         this.setVisible(true);
     }
 
-    private void aggiornaDati() {
+    public void aggiornaDati() {
         Agenzia agenziaSelezionata = (Agenzia) Applicazione.getInstance().getModello().getBeans(Costanti.AGENZIA_SELEZIONATA);
         this.labelCodiceUnivoco.setText(agenziaSelezionata.getCodiceUnivoco());
         this.labelCitta.setText(agenziaSelezionata.getCitta());
@@ -47,6 +62,28 @@ public class VistaDettagliAgenzia extends javax.swing.JDialog {
         ModelloTabellaPacchetti modelloTabellaPacchetti = (ModelloTabellaPacchetti) this.tabellaPacchetti.getModel();
         modelloTabellaPacchetti.setListaPacchetti(listaPacchettiVicini);
         modelloTabellaPacchetti.aggiornaTabella();
+    }
+
+    public String getDestinazioneInserita() {
+        return this.campoDestinazione.getText();
+    }
+
+    public double getImportoInserito() {
+        return (double) this.spinnerImporto.getValue();
+    }
+
+    public Calendar getDataInserita() {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime((Date) this.spinnerDataPartenza.getValue());
+        return cal;
+    }
+
+    public int getDurataInserita() {
+        return (int) this.spinnerDurata.getValue();
+    }
+
+    public String getTipologiaSelezionata() {
+        return (String) this.comboTipologia.getSelectedItem();
     }
 
     @SuppressWarnings("unchecked")
@@ -161,11 +198,9 @@ public class VistaDettagliAgenzia extends javax.swing.JDialog {
 
         jLabel5.setText("Destinazione:");
 
-        campoDestinazione.setText("jTextField1");
-
         jLabel6.setText("Importo:");
 
-        spinnerImporto.setModel(new javax.swing.SpinnerNumberModel(1.0f, 1.0f, null, 1.0f));
+        spinnerImporto.setModel(new javax.swing.SpinnerNumberModel(1.0d, 1.0d, null, 1.0d));
 
         jLabel7.setText("Data partenza:");
 
@@ -196,9 +231,9 @@ public class VistaDettagliAgenzia extends javax.swing.JDialog {
                     .addComponent(campoDestinazione)
                     .addComponent(spinnerDataPartenza)
                     .addComponent(comboTipologia, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(20, 20, 20)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel6)
                             .addComponent(jLabel8))
@@ -206,9 +241,7 @@ public class VistaDettagliAgenzia extends javax.swing.JDialog {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(spinnerDurata, javax.swing.GroupLayout.DEFAULT_SIZE, 223, Short.MAX_VALUE)
                             .addComponent(spinnerImporto)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(bottoneAggiungiPacchetto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(bottoneAggiungiPacchetto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(20, 20, 20))
         );
         jPanel2Layout.setVerticalGroup(

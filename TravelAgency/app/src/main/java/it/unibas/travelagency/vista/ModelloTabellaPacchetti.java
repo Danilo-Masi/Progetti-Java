@@ -1,6 +1,7 @@
 package it.unibas.travelagency.vista;
 
 import it.unibas.travelagency.modello.Pacchetto;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -32,10 +33,12 @@ public class ModelloTabellaPacchetti extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         Pacchetto pacchetto = this.listaPacchetti.get(rowIndex);
         if (columnIndex == 0) {
-            return pacchetto.getTipologia();
+            return pacchetto.getTipologia().toUpperCase();
         }
         if (columnIndex == 1) {
-            return pacchetto.getDataPartenza().getTime();
+
+            DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM);
+            return df.format(pacchetto.getDataPartenza().getTime());
         }
         return "";
     }
@@ -58,7 +61,7 @@ public class ModelloTabellaPacchetti extends AbstractTableModel {
         }
         return "";
     }
-    
+
     public void aggiornaTabella() {
         this.fireTableDataChanged();
     }

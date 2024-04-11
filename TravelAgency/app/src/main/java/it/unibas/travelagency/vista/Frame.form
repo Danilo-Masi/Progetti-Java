@@ -22,6 +22,11 @@
                 <Property name="text" type="java.lang.String" value="jMenuItem1"/>
               </Properties>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuVerifica">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="jMenuItem1"/>
+              </Properties>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuEsci">
               <Properties>
                 <Property name="text" type="java.lang.String" value="jMenuItem2"/>

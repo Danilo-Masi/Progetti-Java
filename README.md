@@ -17,3 +17,4 @@ These projects stem from educational exercises conducted during the university c
 |   07  | AppFilm         | Search and add movies to the system                |
 |   08  | SistemaIstituti | Search and add institutes to the system            |
 |   09  | Mastermind      | The user tries to guess the generated number       |
+|   10  | TravelAgency    | an application that simulates the fragment of an information system for the management of holiday packages offered by travel agencies. |
