@@ -45,7 +45,7 @@ public class VistaDettagliUtente extends javax.swing.JDialog {
         this.setVisible(true);
     }
     
-    private void aggiornaDati() {
+    public void aggiornaDati() {
         Utente utenteSelezionato = (Utente) Applicazione.getInstance().getModello().getBeans(Costanti.UTENTE_SELEZIONATO);
         this.labelUsurname.setText(utenteSelezionato.getNomeUtente());
         this.labelNome.setText(utenteSelezionato.getNome());

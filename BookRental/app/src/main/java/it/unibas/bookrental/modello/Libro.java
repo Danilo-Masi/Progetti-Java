@@ -9,6 +9,9 @@ public class Libro {
     private Calendar dataInizioPrestito;
     private Calendar dataFinePrestito;
 
+    public Libro() {
+    }
+
     public Libro(String nome, String autore, Calendar dataInizioPrestito, Calendar dataFinePrestito) {
         this.nome = nome;
         this.autore = autore;
@@ -30,6 +33,16 @@ public class Libro {
 
     public Calendar getDataFinePrestito() {
         return dataFinePrestito;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Libro{");
+        sb.append("nome=").append(nome);
+        sb.append(", dataFinePrestito=").append(dataFinePrestito);
+        sb.append('}');
+        return sb.toString();
     }
 
 }

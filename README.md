@@ -13,8 +13,8 @@ These projects stem from educational exercises conducted during the university c
 |   03  | Concorsi        | Search and add contests to the system              |
 |   04  | Comuni          | Search and add municipalities to the system        |
 |   05  | IngressiAule    | Search and add entries to the system               |
-|   06  | AgenziaViaggi   | Search and add travels to the system               |
-|   07  | AppFilm         | Search and add movies to the system                |
-|   08  | SistemaIstituti | Search and add institutes to the system            |
-|   09  | Mastermind      | The user tries to guess the generated number       |
-|   10  | TravelAgency    | an application that simulates the fragment of an information system for the management of holiday packages offered by travel agencies. |
+|   06  | SistemaIstituti | Search and add institutes to the system            |
+|   07  | Mastermind      | The user tries to guess the generated number       |
+|   08  | TravelAgency    | application that simulates the fragment of an information system for the management of holiday packages offered by travel agencies. |
+|   09  | FilmAgency      | application that simulates the fragment of an information system for managing a film archive |
+|   10  | BookRental      | application that simulates the fragment of an information system for the management of book rentals made in a library. |

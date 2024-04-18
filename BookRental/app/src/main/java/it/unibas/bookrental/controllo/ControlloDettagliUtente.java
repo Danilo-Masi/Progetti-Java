@@ -4,6 +4,7 @@ import it.unibas.bookrental.Applicazione;
 import it.unibas.bookrental.Costanti;
 import it.unibas.bookrental.modello.Archivio;
 import it.unibas.bookrental.modello.Libro;
+import it.unibas.bookrental.modello.Utente;
 import it.unibas.bookrental.vista.VistaDettagliUtente;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -40,10 +41,11 @@ public class ControlloDettagliUtente {
                 return;
             }
             Libro libro = new Libro(titolo, autore, data, null);
-            Archivio archivio = (Archivio) Applicazione.getInstance().getModello().getBeans(Costanti.ARCHIVIO);
-            archivio.verificaTroppiPrestiti();
-            
-
+            Utente utenteSelzionato = (Utente) Applicazione.getInstance().getModello().getBeans(Costanti.UTENTE_SELEZIONATO);
+            utenteSelzionato.aggiungiLibro(libro);
+            //Archivio archivio = (Archivio) Applicazione.getInstance().getModello().getBeans(Costanti.ARCHIVIO);
+            //archivio.impostaDataFineNoleggio();
+            vistaDettagliUtente.aggiornaDati();
         }
     }
 

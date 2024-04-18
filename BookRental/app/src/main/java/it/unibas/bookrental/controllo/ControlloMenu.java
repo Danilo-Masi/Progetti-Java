@@ -15,6 +15,29 @@ public class ControlloMenu {
 
     private Action azioneEsci = new AzioneEsci();
     private Action azioneCarica = new AzioneCarica();
+    private Action azioneVerifica = new AzioneVerifica();
+
+    private class AzioneVerifica extends AbstractAction {
+
+        public AzioneVerifica() {
+            this.putValue(NAME, "Verifica");
+            this.putValue(SHORT_DESCRIPTION, "Verifica archivio");
+            this.putValue(MNEMONIC_KEY, KeyEvent.VK_V);
+            this.putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke("ctrl alt V"));
+            this.setEnabled(false);
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Archivio archivio = (Archivio) Applicazione.getInstance().getModello().getBeans(Costanti.ARCHIVIO);
+            boolean verifica = archivio.verificaArchivio();
+            if (verifica) {
+                Applicazione.getInstance().getFrame().mostraMessaggio("Tra i libri presi in prestito da più di 6 mesi ci sono più volte libri di uno stesso autore");
+            } else {
+                Applicazione.getInstance().getFrame().mostraMessaggio("Tutti i libri presi in prestito da da più di 6 mesi appartengono ad autori diversi");
+            }
+        }
+    }
 
     private class AzioneCarica extends AbstractAction {
 
@@ -35,6 +58,7 @@ public class ControlloMenu {
                 //Attivazione azioni
                 Applicazione.getInstance().getControlloPrincipale().getAzioneRicerca().setEnabled(true);
                 Applicazione.getInstance().getControlloPrincipale().getAzioneMostraDettagliUtente().setEnabled(true);
+                Applicazione.getInstance().getControlloMenu().getAzioneVerifica().setEnabled(true);
             } catch (DAOException DAOex) {
                 Applicazione.getInstance().getFrame().mostraMessaggioErrore("Errore nel caricamento dell'archivio");
                 return;
@@ -55,6 +79,10 @@ public class ControlloMenu {
         public void actionPerformed(ActionEvent e) {
             System.exit(0);
         }
+    }
+
+    public Action getAzioneVerifica() {
+        return azioneVerifica;
     }
 
     public Action getAzioneCarica() {

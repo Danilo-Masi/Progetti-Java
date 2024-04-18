@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 
 public class Frame extends javax.swing.JFrame {
-
+    
     public void inizializza() {
         initComponents();
         VistaPrincipale vistaPrincipale = Applicazione.getInstance().getVistaPrincipale();
@@ -14,20 +14,21 @@ public class Frame extends javax.swing.JFrame {
         this.setVisible(true);
         inzializzaAzioni();
     }
-
+    
     private void inzializzaAzioni() {
         this.menuEsci.setAction(Applicazione.getInstance().getControlloMenu().getAzioneEsci());
         this.menuCarica.setAction(Applicazione.getInstance().getControlloMenu().getAzioneCarica());
+        this.menuVerifica.setAction(Applicazione.getInstance().getControlloMenu().getAzioneVerifica());
     }
-
+    
     public void mostraMessaggio(String messaggio) {
         JOptionPane.showMessageDialog(this, messaggio, "Book Rental", JOptionPane.INFORMATION_MESSAGE);
     }
-
+    
     public void mostraMessaggioErrore(String errore) {
         JOptionPane.showMessageDialog(this, errore, "Book Rental - Errore", JOptionPane.ERROR_MESSAGE);
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
