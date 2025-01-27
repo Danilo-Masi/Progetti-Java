@@ -35,8 +35,35 @@ public class Applicazione {
         this.controlloPrincipale = new ControlloPrincipale();
         this.dAOArchivio = new DAOArchivioMock();
         // Inizializzazione dei componenti
+        this.vistaPrincipale.inizializza();
         this.frame.inizializza();
     }
+
+    public Modello getModello() {
+        return modello;
+    }
+
+    public Frame getFrame() {
+        return frame;
+    }
+
+    public VistaPrincipale getVistaPrincipale() {
+        return vistaPrincipale;
+    }
+
+    public ControlloMenu getControlloMenu() {
+        return controlloMenu;
+    }
+
+    public ControlloPrincipale getControlloPrincipale() {
+        return controlloPrincipale;
+    }
+
+    public IDAOArchivio getdAOArchivio() {
+        return dAOArchivio;
+    }
+    
+    
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {

@@ -54,4 +54,13 @@ public class Pietanza {
         return kcalTot;
     }
 
+    public boolean contieneAllergeni() {
+        for (Ingrediente ingrediente : listaIngredienti) {
+            if (ingrediente.isAllergene()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
