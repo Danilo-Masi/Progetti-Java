@@ -52,6 +52,7 @@ public class ControlloMenu {
                 Applicazione.getInstance().getFrame().mostraMessaggio("Archivio caricato correttamente");
                 // Abilita azioni
                 Applicazione.getInstance().getControlloPrincipale().getAzioneCerca().setEnabled(true);
+                Applicazione.getInstance().getControlloPrincipale().getAzioneSelezionaConcorso().setEnabled(true);
             } catch (DAOException ex) {
                 Applicazione.getInstance().getFrame().mostraMessaggioErrore("Errore durante il caricamento dell'archivio");
             }

@@ -11,7 +11,7 @@ public class Concorso {
     private int numeroPosti;
     private String regione;
     private Calendar dataOra;
-    private List<Domanda> domande = new ArrayList<>();
+    private List<Domanda> listaDomande = new ArrayList<>();
 
     public Concorso(String codice, String descrizione, int numeroPosti, String regione, Calendar dataOra) {
         this.codice = codice;
@@ -42,7 +42,7 @@ public class Concorso {
     }
 
     public List<Domanda> getDomande() {
-        return domande;
+        return listaDomande;
     }
 
     @Override
@@ -53,12 +53,20 @@ public class Concorso {
         sb.append("Numero posti: ").append(numeroPosti);
         sb.append("Regione: ").append(regione);
         sb.append("Data e ora: ").append(dataOra);
-        sb.append("Lista domande: ").append(domande);
+        sb.append("Lista domande: ").append(listaDomande);
         return sb.toString();
     }
 
     public void aggiungiDomanda(Domanda domanda) {
-        this.domande.add(domanda);
+        this.listaDomande.add(domanda);
     }
 
+    public boolean isContieneDomanda(String codiceFiscale) {
+        for (Domanda domanda : listaDomande) {
+            if (domanda.getCodiceFiscaleRichiedente().equalsIgnoreCase(codiceFiscale)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -15,6 +15,7 @@ public class VistaPrincipale extends javax.swing.JPanel {
 
     private void inizializzaAzioni() {
         this.bottoneCerca.setAction(Applicazione.getInstance().getControlloPrincipale().getAzioneCerca());
+        this.bottoneSeleziona.setAction(Applicazione.getInstance().getControlloPrincipale().getAzioneSelezionaConcorso());
     }
 
     public String getCampoRegione() {
@@ -27,6 +28,10 @@ public class VistaPrincipale extends javax.swing.JPanel {
 
     public boolean isOrdinamentoPosti() {
         return this.radioOrdinamentoPosti.isSelected();
+    }
+
+    public int getRigaSelezionata() {
+        return this.tabellaConcorsi.getSelectedRow();
     }
 
     @SuppressWarnings("unchecked")

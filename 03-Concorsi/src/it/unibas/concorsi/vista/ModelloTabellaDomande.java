@@ -1,60 +1,61 @@
 package it.unibas.concorsi.vista;
 
-import it.unibas.concorsi.modello.Concorso;
+import it.unibas.concorsi.modello.Domanda;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
-public class ModelloTabellaConcorsi extends AbstractTableModel {
+public class ModelloTabellaDomande extends AbstractTableModel {
 
-    private List<Concorso> listaConcorsi = new ArrayList<>();
+    List<Domanda> listaDomande = new ArrayList<>();
 
-    public List<Concorso> getListaConcorsi() {
-        return listaConcorsi;
+    public List<Domanda> getListaDomande() {
+        return listaDomande;
     }
 
-    public void setListaConcorsi(List<Concorso> listaConcorsi) {
-        this.listaConcorsi = listaConcorsi;
+    public void setListaDomande(List<Domanda> listaDomande) {
+        this.listaDomande = listaDomande;
     }
 
     @Override
     public int getRowCount() {
-        return this.listaConcorsi.size();
-
+        return this.listaDomande.size();
     }
 
     @Override
     public int getColumnCount() {
-        return 4;
+        return 3;
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        Concorso concorso = this.listaConcorsi.get(rowIndex);
+        Domanda domanda = this.listaDomande.get(rowIndex);
         if (columnIndex == 0) {
-            return concorso.getCodice();
+            return domanda.getCodiceFiscaleRichiedente();
         }
         if (columnIndex == 1) {
-            return concorso.getDescrizione();
+            return domanda.getSessoRichiedente();
         }
         if (columnIndex == 2) {
-            return concorso.getNumeroPosti();
-        }
-        if (columnIndex == 3) {
             DateFormat df = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT);
-            return df.format(concorso.getDataOra().getTime());
+            return df.format(domanda.getDataPresentazione().getTime());
         }
         return "";
     }
 
     @Override
     public Class<?> getColumnClass(int columnIndex) {
-        if (columnIndex == 2) {
-            return Integer.class;
+        if (columnIndex == 0) {
+            return String.class;
         }
-        if (columnIndex == 3) {
+        if (columnIndex == 1) {
+            return String.class;
+        }
+        if (columnIndex == 2) {
+
             return Calendar.class;
         }
         return String.class;
@@ -63,16 +64,14 @@ public class ModelloTabellaConcorsi extends AbstractTableModel {
     @Override
     public String getColumnName(int columnIndex) {
         if (columnIndex == 0) {
-            return "Codice";
+            return "Codice fiscale";
         }
         if (columnIndex == 1) {
-            return "Descrizione";
+            return "Sesso";
         }
         if (columnIndex == 2) {
-            return "Num.posti";
-        }
-        if (columnIndex == 3) {
-            return "Data e ora";
+
+            return "Data";
         }
         return "";
     }

@@ -4,6 +4,7 @@ import it.unibas.concorsi.Applicazione;
 import it.unibas.concorsi.modello.Archivio;
 import it.unibas.concorsi.modello.Concorso;
 import it.unibas.concorsi.modello.Costanti;
+import it.unibas.concorsi.vista.VistaPrincipale;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.util.List;
@@ -18,6 +19,32 @@ import javax.swing.KeyStroke;
 public class ControlloPrincipale {
 
     private Action AzioneCerca = new AzioneCerca();
+    private Action AzioneSelezionaConcorso = new AzioneSelezionaConcorso();
+
+    private class AzioneSelezionaConcorso extends AbstractAction {
+
+        public AzioneSelezionaConcorso() {
+            this.setEnabled(false);
+            this.putValue(NAME, "Seleziona concorso");
+            this.putValue(SHORT_DESCRIPTION, "Seleziona un concorso");
+            this.putValue(MNEMONIC_KEY, KeyEvent.VK_S);
+            this.putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke("ctrl alt S"));
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            VistaPrincipale vistaPrincipale = Applicazione.getInstance().getVistaPrincipale();
+            int rigaSelezionata = vistaPrincipale.getRigaSelezionata();
+            if (rigaSelezionata == -1) {
+                Applicazione.getInstance().getFrame().mostraMessaggioErrore("Seleziona una riga dalla tabella prima di procedere");
+                return;
+            }
+            List<Concorso> listaFiltrata = (List<Concorso>) Applicazione.getInstance().getModello().getBeans(Costanti.LISTA_FILTRATA);
+            Concorso concorsoSelezionato = listaFiltrata.get(rigaSelezionata);
+            Applicazione.getInstance().getModello().putBeans(Costanti.CONCORSO_SELEZIONATO, concorsoSelezionato);
+            Applicazione.getInstance().getVistaDettagliConcorso().visualizza();
+        }
+    }
 
     private class AzioneCerca extends AbstractAction {
 
@@ -47,6 +74,10 @@ public class ControlloPrincipale {
             Applicazione.getInstance().getModello().putBeans(Costanti.LISTA_FILTRATA, listaFiltrata);
             Applicazione.getInstance().getVistaPrincipale().aggiornaTabella();
         }
+    }
+
+    public Action getAzioneSelezionaConcorso() {
+        return AzioneSelezionaConcorso;
     }
 
     public Action getAzioneCerca() {

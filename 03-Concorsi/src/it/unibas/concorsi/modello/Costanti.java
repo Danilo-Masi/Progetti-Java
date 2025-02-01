@@ -9,5 +9,6 @@ public class Costanti {
     public static final String CRITERIO_DATA = "Ordinamento data";
     public static final String CRITERIO_POSTI = "Ordinamento posti";
     public static final String LISTA_FILTRATA = "Lista filtarta";
+    public static final String CONCORSO_SELEZIONATO = "Concorso selezionato";
 
 }
