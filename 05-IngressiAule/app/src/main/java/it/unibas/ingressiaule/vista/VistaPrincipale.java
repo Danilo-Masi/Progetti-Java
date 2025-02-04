@@ -15,10 +15,15 @@ public class VistaPrincipale extends javax.swing.JPanel {
 
     private void inizializzaAzioni() {
         this.bottoneCerca.setAction(Applicazione.getInstance().getControlloPrincipale().getAzioneCerca());
+        this.bottoneInserisci.setAction(Applicazione.getInstance().getControlloPrincipale().getAzioneInserisci());
     }
 
     public String getCampoPiano() {
         return this.campoPiano.getText();
+    }
+
+    public int getRigaSelezionata() {
+        return this.tabellaAule.getSelectedRow();
     }
 
     @SuppressWarnings("unchecked")
@@ -30,6 +35,7 @@ public class VistaPrincipale extends javax.swing.JPanel {
         javax.swing.JScrollPane jScrollPane1 = new javax.swing.JScrollPane();
         tabellaAule = new javax.swing.JTable();
         bottoneCerca = new javax.swing.JButton();
+        bottoneInserisci = new javax.swing.JButton();
 
         jLabel1.setText("Piano:");
 
@@ -48,20 +54,27 @@ public class VistaPrincipale extends javax.swing.JPanel {
 
         bottoneCerca.setText("jButton1");
 
+        bottoneInserisci.setText("jButton1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(campoPiano, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(bottoneCerca))
-                    .addComponent(jScrollPane1))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bottoneInserisci, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(campoPiano, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(bottoneCerca))
+                            .addComponent(jScrollPane1))))
                 .addGap(10, 10, 10))
         );
         layout.setVerticalGroup(
@@ -73,7 +86,9 @@ public class VistaPrincipale extends javax.swing.JPanel {
                     .addComponent(campoPiano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bottoneCerca))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(bottoneInserisci)
                 .addGap(10, 10, 10))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -81,6 +96,7 @@ public class VistaPrincipale extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bottoneCerca;
+    private javax.swing.JButton bottoneInserisci;
     private javax.swing.JTextField campoPiano;
     private javax.swing.JTable tabellaAule;
     // End of variables declaration//GEN-END:variables

@@ -12,10 +12,6 @@ public class Archivio {
         return listaAule;
     }
 
-    public void setListaAule(List<Aula> listaAule) {
-        this.listaAule = listaAule;
-    }
-
     public void aggiungiAula(Aula aula) {
         this.listaAule.add(aula);
     }
@@ -23,7 +19,7 @@ public class Archivio {
     public List<Aula> cercaAulePerPiano(int piano) {
         List<Aula> listaFiltrata = new ArrayList<>();
         for (Aula aula : listaAule) {
-            if (aula.getPiano() == piano) {
+            if (aula.getPiano() <= piano) {
                 listaFiltrata.add(aula);
             }
         }

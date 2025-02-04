@@ -12,6 +12,7 @@ public class Frame extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setVisible(true);
         inizializzaAzioni();
+        this.pack();
     }
 
     private void inizializzaAzioni() {
@@ -34,6 +35,7 @@ public class Frame extends javax.swing.JFrame {
         javax.swing.JMenuBar jMenuBar1 = new javax.swing.JMenuBar();
         javax.swing.JMenu jMenu1 = new javax.swing.JMenu();
         menuCarica = new javax.swing.JMenuItem();
+        menuVerifica = new javax.swing.JMenuItem();
         menuEsci = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -42,6 +44,9 @@ public class Frame extends javax.swing.JFrame {
 
         menuCarica.setText("jMenuItem1");
         jMenu1.add(menuCarica);
+
+        menuVerifica.setText("jMenuItem1");
+        jMenu1.add(menuVerifica);
 
         menuEsci.setText("jMenuItem3");
         jMenu1.add(menuEsci);
@@ -68,5 +73,6 @@ public class Frame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem menuCarica;
     private javax.swing.JMenuItem menuEsci;
+    private javax.swing.JMenuItem menuVerifica;
     // End of variables declaration//GEN-END:variables
 }

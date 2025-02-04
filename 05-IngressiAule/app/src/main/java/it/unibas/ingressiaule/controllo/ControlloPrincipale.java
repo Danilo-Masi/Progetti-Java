@@ -15,6 +15,32 @@ import javax.swing.KeyStroke;
 public class ControlloPrincipale {
 
     private Action azioneCerca = new AzioneCerca();
+    private Action azioneInserisci = new AzioneInserisci();
+
+    private class AzioneInserisci extends AbstractAction {
+
+        public AzioneInserisci() {
+            this.setEnabled(false);
+            this.putValue(NAME, "Inserisci");
+            this.putValue(SHORT_DESCRIPTION, "Inserisci un nuovo accesso");
+            this.putValue(MNEMONIC_KEY, KeyEvent.VK_I);
+            this.putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke("ctrl alt I"));
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            VistaPrincipale vistaPrincipale = Applicazione.getInstance().getVistaPrincipale();
+            int rigaSelezionata = vistaPrincipale.getRigaSelezionata();
+            if (rigaSelezionata == -1) {
+                Applicazione.getInstance().getFrame().mostraMessaggioErrore("Seleziona un aula prima di procedere");
+                return;
+            }
+            List<Aula> listaFiltrata = (List<Aula>) Applicazione.getInstance().getModello().getBeans(Costanti.LISTA_FILTRATA);
+            Aula aulaSelezionata = listaFiltrata.get(rigaSelezionata);
+            Applicazione.getInstance().getModello().putBeans(Costanti.AULA_SELZIONATA, aulaSelezionata);
+            Applicazione.getInstance().getVistaDettagliAccesso().visualizza();
+        }
+    }
 
     private class AzioneCerca extends AbstractAction {
 
@@ -47,14 +73,19 @@ public class ControlloPrincipale {
         StringBuilder errori = new StringBuilder();
         if (pianoString.isEmpty()) {
             errori.append("Il campo del piano non può essere vuoto \n");
-        }
-        try {
-            int piano = Integer.parseInt(pianoString);
-            System.out.println(piano);
-        } catch (NumberFormatException e) {
-            errori.append("Il valore inserito per il piano non è valido \n");
+        } else {
+            try {
+                int piano = Integer.parseInt(pianoString);
+                System.out.println(piano);
+            } catch (NumberFormatException e) {
+                errori.append("Il valore inserito per il piano non è valido \n");
+            }
         }
         return errori.toString();
+    }
+
+    public Action getAzioneInserisci() {
+        return azioneInserisci;
     }
 
     public Action getAzioneCerca() {

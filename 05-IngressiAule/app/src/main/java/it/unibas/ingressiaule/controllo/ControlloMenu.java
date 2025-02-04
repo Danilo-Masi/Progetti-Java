@@ -32,6 +32,7 @@ public class ControlloMenu {
                 Applicazione.getInstance().getFrame().mostraMessaggio("Archivo caricato correttamente contenente " + archivio.getListaAule().size() + " aule");
                 // Abilita funzionalità
                 Applicazione.getInstance().getControlloPrincipale().getAzioneCerca().setEnabled(true);
+                Applicazione.getInstance().getControlloPrincipale().getAzioneInserisci().setEnabled(true);
             } catch (DAOException ex) {
                 Applicazione.getInstance().getFrame().mostraMessaggioErrore("Errore durante il caricamento dell'archivio");
             }
