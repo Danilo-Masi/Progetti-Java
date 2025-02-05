@@ -21,8 +21,12 @@ public class DAOArchivio implements IDAOArchivio {
         aula1.aggiungiAccesso(a2);
         aula1.aggiungiAccesso(a3);
 
-        archivio.aggiungiAula(aula1);
+        Aula aula2 = new Aula("BII2", "Aula Newton", 2);
+        aula2.aggiungiAccesso(new Accesso("23456O", "Mirko Bonanni", 178, Costanti.LEZIONE, new GregorianCalendar(2024, Calendar.AUGUST, 2, 10, 30)));
 
+        archivio.aggiungiAula(aula1);
+        archivio.aggiungiAula(aula2);
+        
         return archivio;
     }
 

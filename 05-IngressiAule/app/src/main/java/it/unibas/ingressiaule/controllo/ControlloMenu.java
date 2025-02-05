@@ -14,6 +14,29 @@ public class ControlloMenu {
 
     private Action azioneEsci = new AzioneEsci();
     private Action azioneCarica = new AzioneCarica();
+    private Action azioneVerifica = new AzioneVerifica();
+
+    private class AzioneVerifica extends AbstractAction {
+
+        public AzioneVerifica() {
+            this.setEnabled(false);
+            this.putValue(NAME, "Verifica");
+            this.putValue(SHORT_DESCRIPTION, "Verifica duplicati");
+            this.putValue(MNEMONIC_KEY, KeyEvent.VK_V);
+            this.putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke("ctrl alt V"));
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            Archivio archivio = (Archivio) Applicazione.getInstance().getModello().getBeans(Costanti.ARCHIVIO);
+            boolean isPresenzaDuplicati = archivio.verificaAccessiDuplicati();
+            if (isPresenzaDuplicati) {
+                Applicazione.getInstance().getFrame().mostraMessaggio("Sono stati trovati accessi duplicati di Domenica");
+            } else {
+                Applicazione.getInstance().getFrame().mostraMessaggio("Non ci sono accessi duplicati di Domenica");
+            }
+        }
+    }
 
     private class AzioneCarica extends AbstractAction {
 
@@ -33,6 +56,7 @@ public class ControlloMenu {
                 // Abilita funzionalità
                 Applicazione.getInstance().getControlloPrincipale().getAzioneCerca().setEnabled(true);
                 Applicazione.getInstance().getControlloPrincipale().getAzioneInserisci().setEnabled(true);
+                Applicazione.getInstance().getControlloMenu().getAzioneVerifica().setEnabled(true);
             } catch (DAOException ex) {
                 Applicazione.getInstance().getFrame().mostraMessaggioErrore("Errore durante il caricamento dell'archivio");
             }
@@ -53,6 +77,10 @@ public class ControlloMenu {
         public void actionPerformed(ActionEvent e) {
             System.exit(0);
         }
+    }
+
+    public Action getAzioneVerifica() {
+        return azioneVerifica;
     }
 
     public Action getAzioneCarica() {

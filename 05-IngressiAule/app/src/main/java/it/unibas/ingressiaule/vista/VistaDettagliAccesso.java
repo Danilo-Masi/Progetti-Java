@@ -12,16 +12,31 @@ public class VistaDettagliAccesso extends javax.swing.JDialog {
 
     public void inizializza() {
         initComponents();
+        inizializzaComponentiIniziali();
+        inizializzaAzioni();
+    }
+
+    private void inizializzaComponentiIniziali() {
+        this.comboMotivazione.removeAllItems();
+        this.comboMotivazione.addItem("");
+        this.comboMotivazione.addItem(Costanti.ESAME);
+        this.comboMotivazione.addItem(Costanti.LEZIONE);
+        this.comboMotivazione.addItem(Costanti.RICEVIMENTO);
+        // Inizializza modello tabella
         this.tabellaAccessi.setModel(new ModelloTabellaAccessi());
     }
-    
+
+    private void inizializzaAzioni() {
+        this.bottoneNuovoAccesso.setAction(Applicazione.getInstance().getControlloDettagliAccesso().getAzioneNuovoAccesso());
+    }
+
     public void visualizza() {
+        aggiornaComponenti();
         this.setLocationRelativeTo(getParent());
-        inizializzaComponenti();
         this.setVisible(true);
     }
 
-    public void inizializzaComponenti() {
+    public void aggiornaComponenti() {
         Aula aulaSelezionata = (Aula) Applicazione.getInstance().getModello().getBeans(Costanti.AULA_SELZIONATA);
         this.labelCodice.setText(aulaSelezionata.getCodice());
         this.labelNome.setText(aulaSelezionata.getNome());
@@ -29,12 +44,51 @@ public class VistaDettagliAccesso extends javax.swing.JDialog {
         ModelloTabellaAccessi modelloTabellaAccessi = (ModelloTabellaAccessi) this.tabellaAccessi.getModel();
         modelloTabellaAccessi.setListaAccessi(aulaSelezionata.getListaAccessi());
         modelloTabellaAccessi.aggiornaContenuto();
-        // Inizializzazione della comboBox
-        this.comboMotivazione.removeAllItems();
-        this.comboMotivazione.addItem("");
-        this.comboMotivazione.addItem(Costanti.ESAME);
-        this.comboMotivazione.addItem(Costanti.LEZIONE);
-        this.comboMotivazione.addItem(Costanti.RICEVIMENTO);
+        // Formatta i campi una volta eseguita l'azione
+        this.campoNome.setText("");
+        this.campoMatricola.setText("");
+        this.spinnerDurata.setValue(1);
+        this.campoAnno.setText("");
+        this.campoMese.setText("");
+        this.campoGiorno.setText("");
+        this.campoOra.setText("");
+        this.campoMinuti.setText("");
+    }
+
+    public String getValoreNome() {
+        return this.campoNome.getText();
+    }
+
+    public String getValoreMatricola() {
+        return this.campoMatricola.getText();
+    }
+
+    public int getValoreDurata() {
+        return (int) this.spinnerDurata.getValue();
+    }
+
+    public String getValoreMotivazione() {
+        return this.comboMotivazione.getSelectedItem().toString();
+    }
+
+    public String getValoreAnno() {
+        return this.campoAnno.getText();
+    }
+
+    public String getValoreMese() {
+        return this.campoMese.getText();
+    }
+
+    public String getValoreGiorno() {
+        return this.campoGiorno.getText();
+    }
+
+    public String getValoreOra() {
+        return this.campoOra.getText();
+    }
+
+    public String getValoreMinuti() {
+        return this.campoMinuti.getText();
     }
 
     @SuppressWarnings("unchecked")
@@ -67,6 +121,8 @@ public class VistaDettagliAccesso extends javax.swing.JDialog {
         javax.swing.JLabel jLabel11 = new javax.swing.JLabel();
         campoMinuti = new javax.swing.JTextField();
         bottoneNuovoAccesso = new javax.swing.JButton();
+        javax.swing.JLabel jLabel12 = new javax.swing.JLabel();
+        campoNome = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -125,6 +181,8 @@ public class VistaDettagliAccesso extends javax.swing.JDialog {
 
         bottoneNuovoAccesso.setText("jButton1");
 
+        jLabel12.setText("Nome:");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -132,43 +190,43 @@ public class VistaDettagliAccesso extends javax.swing.JDialog {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel10)
+                    .addComponent(jLabel12))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(campoOra, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel11)
+                        .addGap(18, 18, 18)
+                        .addComponent(campoMinuti, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                        .addGap(192, 192, 192)
                         .addComponent(bottoneNuovoAccesso, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel4))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(campoMatricola)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(campoMatricola)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(spinnerDurata)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(comboMotivazione, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(campoGiorno, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campoMese, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campoAnno, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campoOra, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(campoMinuti, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addComponent(spinnerDurata)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(comboMotivazione, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(campoNome)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(campoGiorno, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel8)
+                        .addGap(18, 18, 18)
+                        .addComponent(campoMese, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(campoAnno, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -190,12 +248,15 @@ public class VistaDettagliAccesso extends javax.swing.JDialog {
                     .addComponent(campoMese, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
                     .addComponent(campoAnno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10)
+                    .addComponent(jLabel12)
+                    .addComponent(campoNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(bottoneNuovoAccesso)
                     .addComponent(campoOra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10)
                     .addComponent(jLabel11)
                     .addComponent(campoMinuti, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(bottoneNuovoAccesso)
                 .addGap(10, 10, 10))
         );
 
@@ -254,6 +315,7 @@ public class VistaDettagliAccesso extends javax.swing.JDialog {
     private javax.swing.JTextField campoMatricola;
     private javax.swing.JTextField campoMese;
     private javax.swing.JTextField campoMinuti;
+    private javax.swing.JTextField campoNome;
     private javax.swing.JTextField campoOra;
     private javax.swing.JComboBox<String> comboMotivazione;
     private javax.swing.JLabel labelCodice;
@@ -262,4 +324,5 @@ public class VistaDettagliAccesso extends javax.swing.JDialog {
     private javax.swing.JSpinner spinnerDurata;
     private javax.swing.JTable tabellaAccessi;
     // End of variables declaration//GEN-END:variables
+
 }

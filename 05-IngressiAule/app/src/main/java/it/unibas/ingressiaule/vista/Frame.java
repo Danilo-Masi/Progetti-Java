@@ -18,6 +18,7 @@ public class Frame extends javax.swing.JFrame {
     private void inizializzaAzioni() {
         this.menuCarica.setAction(Applicazione.getInstance().getControlloMenu().getAzioneCarica());
         this.menuEsci.setAction(Applicazione.getInstance().getControlloMenu().getAzioneEsci());
+        this.menuVerifica.setAction(Applicazione.getInstance().getControlloMenu().getAzioneVerifica());
     }
 
     public void mostraMessaggio(String messaggio) {
