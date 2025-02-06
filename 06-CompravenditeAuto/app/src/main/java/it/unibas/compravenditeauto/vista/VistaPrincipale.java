@@ -15,6 +15,7 @@ public class VistaPrincipale extends javax.swing.JPanel {
 
     private void inizializzaAzioni() {
         this.bottoneCerca.setAction(Applicazione.getInstance().getControlloPrincipale().getAzioneCercaAuto());
+        this.bottoneNuovaOperazione.setAction(Applicazione.getInstance().getControlloPrincipale().getAzioneInserisciOperazione());
     }
 
     public String getValoreAnno() {
@@ -31,6 +32,10 @@ public class VistaPrincipale extends javax.swing.JPanel {
 
     public boolean isOrdinamentoCrescente() {
         return this.radioCrescente.isSelected();
+    }
+
+    public int getRigaSelezionata() {
+        return this.tabellaAuto.getSelectedRow();
     }
 
     @SuppressWarnings("unchecked")

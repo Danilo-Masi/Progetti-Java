@@ -4,6 +4,7 @@ import it.unibas.compravenditeauto.Applicazione;
 import it.unibas.compravenditeauto.modello.Archivio;
 import it.unibas.compravenditeauto.modello.Auto;
 import it.unibas.compravenditeauto.modello.Costanti;
+import it.unibas.compravenditeauto.vista.VistaDettagliAuto;
 import it.unibas.compravenditeauto.vista.VistaPrincipale;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -21,6 +22,33 @@ import javax.swing.KeyStroke;
 public class ControlloPrincipale {
 
     private Action azioneCercaAuto = new AzioneCercaAuto();
+    private Action azioneInserisciOperazione = new AzioneInserisciOperazione();
+
+    private class AzioneInserisciOperazione extends AbstractAction {
+
+        public AzioneInserisciOperazione() {
+            this.setEnabled(false);
+            this.putValue(NAME, "Inserisci");
+            this.putValue(SHORT_DESCRIPTION, "Inserisci una nuova operazione");
+            this.putValue(MNEMONIC_KEY, KeyEvent.VK_I);
+            this.putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke("ctrl alt I"));
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            VistaPrincipale vistaPrincipale = Applicazione.getInstance().getVistaPrincipale();
+            int rigaSelezionata = vistaPrincipale.getRigaSelezionata();
+            if (rigaSelezionata == -1) {
+                Applicazione.getInstance().getFrame().mostraMessaggioErrore("Seleziona un auto prima di procederre");
+                return;
+            }
+            List<Auto> listaFiltrata = (List<Auto>) Applicazione.getInstance().getModello().getBeans(Costanti.LISTA_FILTRATA);
+            Auto autoSelezionata = listaFiltrata.get(rigaSelezionata);
+            Applicazione.getInstance().getModello().putBeans(Costanti.AUTO_SELEZIONATA, autoSelezionata);
+            VistaDettagliAuto vistaDettagliAuto = Applicazione.getInstance().getVistaDettagliAuto();
+            vistaDettagliAuto.visualizza();
+        }
+    }
 
     private class AzioneCercaAuto extends AbstractAction {
 
@@ -83,6 +111,10 @@ public class ControlloPrincipale {
             }
             return errori.toString();
         }
+    }
+
+    public Action getAzioneInserisciOperazione() {
+        return azioneInserisciOperazione;
     }
 
     public Action getAzioneCercaAuto() {
