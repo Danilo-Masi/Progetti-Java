@@ -8,6 +8,7 @@ These projects stem from educational exercises conducted during the university c
 
 | Index | Projects         | Description                                        |
 |-------|------------------|----------------------------------------------------|
+|   00  | Calcolatrice     | ---                                                |
 |   01  | Codice fiscale   | Calculation of the fiscal code                     |
 |   02  | Ricettario       | ---                                                |
 |   03  | Concorsi         | ---                                                |
