@@ -5,28 +5,27 @@ import it.unibas.codicefiscale.modello.Persona;
 import junit.framework.TestCase;
 
 public class CodiceFiscaleTest extends TestCase {
-    
+
     public CodiceFiscaleTest(String testName) {
         super(testName);
     }
-    
+
+    // TEST CORRETTO
     public void testCodiceFiscale1() {
-        Persona persona = new Persona("Danilo", "Masi", 1999, Costanti.MASCHIO, "Lavello");
+        Persona persona = new Persona("Danilo", "Masi", 1999, "Venosa", Costanti.MASCHIO);
         assertEquals("DANMAS1999M", persona.getCodiceFiscale());
     }
-    
+
+    // TEST DATI SCORRETTI
     public void testCodiceFiscale2() {
-        Persona persona = new Persona("Maria", "Incoronata", 1912, Costanti.FEMMINA, "Siracusa");
-        assertEquals("MARINC1912F", persona.getCodiceFiscale());
+        Persona persona = new Persona("Danilo", "Masi", 1999, "Venosa", Costanti.MASCHIO);
+        assertEquals("MSADNL1999M", persona.getCodiceFiscale());
     }
     
-    public void testCodiceFiscaleScorretto1() {
-        Persona persona = new Persona("XX", "YY", 1945, Costanti.MASCHIO, "Milano");
-        try {
-            persona.getCodiceFiscale();
-            fail("Il codice fiscale non doveva poter essere calcolato");
-        } catch (IllegalArgumentException e) {
-        }
+    // TEST LANCIA ECCEZZIONE
+    public void testCodiceFiscale3() {
+        Persona persona = new Persona("XX", "X", 1999, "Venosa", Costanti.MASCHIO);
+        persona.getCodiceFiscale();
     }
-    
+
 }
