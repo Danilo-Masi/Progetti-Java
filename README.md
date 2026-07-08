@@ -8,5 +8,6 @@ These projects stem from educational exercises conducted during the university c
 
 | Index | Projects         | Description                                        |
 |-------|------------------|----------------------------------------------------|
-|   00  | Calcolatrice     | ---                                                |
-|   01  | Codice fiscale   | Calculation of the fiscal code                     |
+|   00  | Calcolatrice     | Basic Java Application                             |
+|   01  | Codice fiscale   | Basic Java Application with Ant and GUI            |
+|   02  | Ricettario       | Basic Java Application with MVC infrastructure     |
