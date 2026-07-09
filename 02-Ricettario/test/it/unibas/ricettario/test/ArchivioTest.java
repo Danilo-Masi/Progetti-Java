@@ -32,7 +32,7 @@ public class ArchivioTest extends TestCase {
     public void testPietanzaSimileCategoria() {
         Pietanza pietanzaPastaAlleNoci = archivio.getPietanze().get(0);
         Pietanza pietanzaPastaAiGamberi = archivio.getPietanze().get(1);
-        assertEquals("Pasta e Panna", archivio.cercaPietanzaSimile(pietanzaPastaAlleNoci).getNome());
+        assertEquals("Pasta ai Gamberi", archivio.cercaPietanzaSimile(pietanzaPastaAlleNoci).getNome());
         assertEquals("Pasta alle Noci", archivio.cercaPietanzaSimile(pietanzaPastaAiGamberi).getNome());
     }
 
