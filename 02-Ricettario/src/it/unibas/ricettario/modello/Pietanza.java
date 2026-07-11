@@ -54,4 +54,13 @@ public class Pietanza {
         return somma;
     }
 
+    public boolean contieneAllergeni() {
+        for (Ingrediente ingrediente : ingredienti) {
+            if (ingrediente.isAllergene()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

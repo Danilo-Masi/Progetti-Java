@@ -1,12 +1,32 @@
 package it.unibas.ricettario.vista;
 
+import it.unibas.ricettario.Applicazione;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+
 public class Frame extends javax.swing.JFrame {
 
     public void inizializza() {
         initComponents();
-        
+        VistaPrincipale vistaPrincipale = Applicazione.getInstance().getVistaPrincipale();
+        this.setContentPane(new JScrollPane(vistaPrincipale));
         setLocationRelativeTo(null);
         this.setVisible(true);
+        inizializzaAzioni();
+    }
+
+    private void inizializzaAzioni() {
+        this.menuEsci.setAction(Applicazione.getInstance().getControlloMenu().getAzioneEsci());
+        this.menuCarica.setAction(Applicazione.getInstance().getControlloMenu().getAzioneCarica());
+        this.menuCerca.setAction(Applicazione.getInstance().getControlloPrincipale().getAzioneCercaTipologia());
+    }
+
+    public void mostraMessaggio(String messaggio) {
+        JOptionPane.showMessageDialog(rootPane, messaggio, "Messaggio di servizio", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public void mostraMessaggioErrore(String errore) {
+        JOptionPane.showMessageDialog(rootPane, errore, "Messaggio di errore", JOptionPane.ERROR_MESSAGE);
     }
 
     @SuppressWarnings("unchecked")
@@ -41,11 +61,11 @@ public class Frame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 599, Short.MAX_VALUE)
+            .addGap(0, 546, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 419, Short.MAX_VALUE)
+            .addGap(0, 305, Short.MAX_VALUE)
         );
 
         pack();

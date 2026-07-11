@@ -11,5 +11,6 @@
   
     <logger name="it.unibas.ricettario.modello" level="debug"/>  
     <logger name="it.unibas.ricettario.vista" level="debug"/>  
+    <logger name="it.unibas.ricettario.controllo" level="debug"/>  
 
 </configuration>
