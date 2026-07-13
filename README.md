@@ -11,3 +11,4 @@ These projects stem from educational exercises conducted during the university c
 |   00  | Calcolatrice     | Basic Java Application                             |
 |   01  | Codice fiscale   | Basic Java Application with Ant and GUI            |
 |   02  | Ricettario       | Basic Java Application with MVC infrastructure     |
+|   03  | Concorsi         | More dialog, collections order, date elaboration   |
