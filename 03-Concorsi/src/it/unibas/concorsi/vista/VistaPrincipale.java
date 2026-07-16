@@ -1,26 +1,36 @@
 package it.unibas.concorsi.vista;
 
 import it.unibas.concorsi.Applicazione;
+import it.unibas.concorsi.modello.Concorso;
+import it.unibas.concorsi.modello.Costanti;
+import java.util.List;
 
 public class VistaPrincipale extends javax.swing.JPanel {
-
+    
     public void inizializza() {
         initComponents();
         inizializzaAzioni();
+        this.tabellaConcorsi.setModel(new ModelloTabella());
     }
-
+    
     private void inizializzaAzioni() {
         this.bottoneCerca.setAction(Applicazione.getInstance().getControlloPrincipale().getAzioneCerca());
+        this.campoRegione.setAction(Applicazione.getInstance().getControlloPrincipale().getAzioneCerca());
+        this.bottoneSeleziona.setAction(Applicazione.getInstance().getControlloPrincipale().getAzioneSeleziona());
     }
-
+    
     public String getCampoRegione() {
         return this.campoRegione.getText();
     }
-
+    
     public boolean isOrdinamentoData() {
         return this.radioOrdinamentoData.isSelected();
     }
-
+    
+    public int getRigaSelezionata() {
+        return this.tabellaConcorsi.getSelectedRow();
+    }
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -143,6 +153,9 @@ public class VistaPrincipale extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     public void aggiornaTabella() {
-        // TODO: IMPLEMENTARE MODELLO
+        List<Concorso> listaConcorsi = (List<Concorso>) Applicazione.getInstance().getModello().getBean(Costanti.LISTA_FILTRATA);
+        ModelloTabella modelloTabella = (ModelloTabella) this.tabellaConcorsi.getModel();
+        modelloTabella.setListaConcorsi(listaConcorsi);
+        modelloTabella.aggiornaContenuto();
     }
 }

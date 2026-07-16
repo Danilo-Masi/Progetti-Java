@@ -17,6 +17,32 @@ import org.slf4j.LoggerFactory;
 public class ControlloPrincipale {
 
     private Action azioneCerca = new AzioneCerca();
+    private Action azioneSeleziona = new AzioneSeleziona();
+
+    private class AzioneSeleziona extends AbstractAction {
+
+        public AzioneSeleziona() {
+            this.putValue(NAME, "Seleziona");
+            this.putValue(SHORT_DESCRIPTION, "Seleziona un corso per aggiungere domanda");
+            this.putValue(MNEMONIC_KEY, KeyEvent.VK_S);
+            this.putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke("ctrl alt S"));
+            this.setEnabled(false);
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            VistaPrincipale vistaPrincipale = Applicazione.getInstance().getVistaPrincipale();
+            int rigaSelezionata = vistaPrincipale.getRigaSelezionata();
+            if (rigaSelezionata == -1) {
+                Applicazione.getInstance().getFrame().mostraMessaggioErrore("Prima di procedere selziona un corso");
+                return;
+            }
+            List<Concorso> listaFiltrata = (List<Concorso>) Applicazione.getInstance().getModello().getBean(Costanti.LISTA_FILTRATA);
+            Concorso concorsoSelezionato = listaFiltrata.get(rigaSelezionata);
+            Applicazione.getInstance().getModello().putBean(Costanti.CONCORSO_SELEZIONATO, concorsoSelezionato);
+            Applicazione.getInstance().getVistaDettagliConcorso().visualizza();
+        }
+    }
 
     private class AzioneCerca extends AbstractAction {
 
@@ -48,9 +74,12 @@ public class ControlloPrincipale {
             List<Concorso> listaFiltrata = archivio.cercaConcorsiPerRegione(regione, criterioOrdinamento);
             logger.debug("Lista filtrata contiene {} elementi", listaFiltrata.size());
             Applicazione.getInstance().getModello().putBean(Costanti.LISTA_FILTRATA, listaFiltrata);
-            // TODO: AGGIORNA TABELLA
             Applicazione.getInstance().getVistaPrincipale().aggiornaTabella();
         }
+    }
+
+    public Action getAzioneSeleziona() {
+        return azioneSeleziona;
     }
 
     public Action getAzioneCerca() {

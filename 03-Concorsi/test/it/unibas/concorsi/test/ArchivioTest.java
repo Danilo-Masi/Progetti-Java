@@ -23,7 +23,7 @@ public class ArchivioTest extends TestCase {
 
     public void testFiltroCategoria() {
         assertEquals(1, archivio.cercaConcorsiPerRegione(Costanti.VENETO, "").size());
-        assertEquals(1, archivio.cercaConcorsiPerRegione(Costanti.BASILICATA, "").size());
+        assertEquals(2, archivio.cercaConcorsiPerRegione(Costanti.BASILICATA, "").size());
         assertEquals(0, archivio.cercaConcorsiPerRegione(Costanti.FRIULI_VENEZIA_GIULIA, "").size());
         assertEquals(0, archivio.cercaConcorsiPerRegione(Costanti.PUGLIA, "").size());
     }

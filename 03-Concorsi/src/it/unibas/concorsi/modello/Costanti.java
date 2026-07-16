@@ -28,6 +28,7 @@ public class Costanti {
 
     public static final String ARCHIVIO = "Archivio";
     public static final String LISTA_FILTRATA = "Lista filtrata";
+    public static final String CONCORSO_SELEZIONATO = "Concorso selezionato";
 
     public static final String ORDINAMENTO_DATA = "Ordinamento data";
     public static final String ORDINAMENTO_POSTI = "Ordinamento posti";

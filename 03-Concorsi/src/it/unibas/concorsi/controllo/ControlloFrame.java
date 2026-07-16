@@ -39,6 +39,7 @@ public class ControlloFrame {
                 Applicazione.getInstance().getFrame().mostraMessaggio("Archivio caricato correttamente");
                 // Abilita azioni
                 Applicazione.getInstance().getControlloPrincipale().getAzioneCerca().setEnabled(true);
+                Applicazione.getInstance().getControlloPrincipale().getAzioneSeleziona().setEnabled(true);
             } catch (DAOException ex) {
                 logger.debug("Eccezzione nel caricamento dell'archivio: {}", ex.toString());
                 Applicazione.getInstance().getFrame().mostraMessaggioErrore("Impossibile caricare l'archivio dei dati");

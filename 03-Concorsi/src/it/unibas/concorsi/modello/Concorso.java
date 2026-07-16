@@ -61,4 +61,13 @@ public class Concorso {
         this.listaDomande.add(domanda);
     }
 
+    public boolean isContieneDomanda(String codiceFiscale) {
+        for (Domanda domanda : listaDomande) {
+            if (domanda.getCodiceFiscale().equalsIgnoreCase(codiceFiscale)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

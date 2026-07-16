@@ -20,12 +20,16 @@ public class DAOArchivoMock implements IDAOArchivio {
         concorso1.aggiungiDomanda(new Domanda("KAKALL56", Costanti.MASCHIO, new GregorianCalendar(2026, Calendar.JUNE, 12, 12, 12)));
         archivio.aggiungiConcorso(concorso1);
 
-        Concorso concorso2 = new Concorso("CON02", "Concorso per gatti albini", 26, Costanti.VENETO,
+        Concorso concorso2 = new Concorso("CON02", "Concorso per gatti albini", 26, Costanti.BASILICATA,
                 new GregorianCalendar(2026, Calendar.MAY, 7, 8, 00));
         concorso2.aggiungiDomanda(new Domanda("MSADNL99", Costanti.MASCHIO, new GregorianCalendar(2026, Calendar.APRIL, 25, 12, 00)));
         concorso2.aggiungiDomanda(new Domanda("RFGPPP89", Costanti.FEMMINA, new GregorianCalendar(2026, Calendar.APRIL, 5, 11, 11)));
         concorso2.aggiungiDomanda(new Domanda("KAKALL56", Costanti.MASCHIO, new GregorianCalendar(2026, Calendar.JUNE, 12, 12, 12)));
         archivio.aggiungiConcorso(concorso2);
+
+        Concorso concorso3 = new Concorso("CON03", "Concorso poste francesi", 5, Costanti.VENETO,
+                new GregorianCalendar(2026, Calendar.JANUARY, 1, 8, 00));
+        archivio.aggiungiConcorso(concorso3);
 
         return archivio;
     }
