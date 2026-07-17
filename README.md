@@ -6,9 +6,10 @@ These projects stem from educational exercises conducted during the university c
 
 ## Project list
 
-| Index | Projects         | Description                                        |
-|-------|------------------|----------------------------------------------------|
-|   00  | Calcolatrice     | Basic Java Application                             |
-|   01  | Codice fiscale   | Basic Java Application with Ant and GUI            |
-|   02  | Ricettario       | Basic Java Application with MVC infrastructure     |
-|   03  | Concorsi         | More windows, Collections sort, Calendar           |
+| Index | Projects         | Description                                                                                                                  |
+|-------|------------------|------------------------------------------------------------------------------------------------------------------------------|
+|   00  | Calcolatrice     | Simple Java console/desktop calculator, introducing basic syntax, methods, and program flow                                  |
+|   01  | Codice fiscale   | Application that generates the Italian fiscal code from personal data, built with Ant and a Swing GUI                        |  
+|   02  | Ricettario       | Recipe manager built on the MVC pattern, showing how to separate data, logic, and interface                                  |
+|   03  | Concorsi         | Multi window desktop application for managing competitions, using Collections sorting and the Calendar API for date handling |
+|   04  | Comuni           | Application built with Gradle that reads Italian municipality data from a JSON file and aggregates statistics by province    |
