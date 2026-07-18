@@ -11,5 +11,6 @@
   
     <logger name="it.unibas.comuni.modello" level="debug"/>  
     <logger name="it.unibas.comuni.vista" level="debug"/>  
+    <logger name="it.unibas.comuni.controllo" level="debug"/>  
 
 </configuration>
