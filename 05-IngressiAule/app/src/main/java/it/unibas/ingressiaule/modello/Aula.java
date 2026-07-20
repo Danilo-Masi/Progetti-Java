@@ -3,7 +3,7 @@ package it.unibas.ingressiaule.modello;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Aula {
+public class Aula implements Comparable<Aula> {
 
     private String codice;
     private String nome;
@@ -34,6 +34,21 @@ public class Aula {
 
     public void aggiungiAccesso(Accesso accesso) {
         this.listaAccessi.add(accesso);
+    }
+
+    @Override
+    public int compareTo(Aula o) {
+        return this.getNome().compareTo(o.getNome());
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Codice: ").append(codice).append("\t");
+        sb.append("Nome: ").append(nome).append("\t");
+        sb.append("Piano: ").append(piano).append("\t");
+        sb.append("Lista Accessi: ").append(listaAccessi).append("\t");
+        return sb.toString();
     }
 
 }

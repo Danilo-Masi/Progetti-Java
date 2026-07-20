@@ -6,8 +6,8 @@ public class Accesso {
 
     private String matricola;
     private String nomeStudente;
-    private int permanenza;
     private String motivazione;
+    private int permanenza;
     private Calendar data;
 
     public Accesso(String matricola, String nomeStudente, int permanenza, String motivazione, Calendar data) {
@@ -36,6 +36,17 @@ public class Accesso {
 
     public Calendar getData() {
         return data;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Matricola: ").append(matricola).append("\t");
+        sb.append("Nome studente: ").append(nomeStudente).append("\t");
+        sb.append("Permanenza (min): ").append(permanenza).append("\t");
+        sb.append("Motivazione: ").append(motivazione).append("\t");
+        sb.append("Data: ").append(data).append("\t");
+        return sb.toString();
     }
 
 }
