@@ -59,7 +59,7 @@
                   <Component id="labelPiano" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="111" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" pref="120" max="32767" attributes="0"/>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Component id="jPanel1" max="32767" attributes="0"/>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
@@ -178,7 +178,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="campoAnno" alignment="0" max="32767" attributes="0"/>
+                              <Component id="campoAnno" alignment="0" pref="138" max="32767" attributes="0"/>
                               <Component id="campoOra" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
@@ -193,11 +193,11 @@
                               <Group type="102" attributes="0">
                                   <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                                  <Component id="campoMese" max="32767" attributes="0"/>
+                                  <Component id="campoMese" pref="101" max="32767" attributes="0"/>
                                   <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                                  <Component id="campoGiorno" pref="83" max="32767" attributes="0"/>
+                                  <Component id="campoGiorno" pref="140" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -256,9 +256,6 @@
           </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="campoMatrciola">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
@@ -270,9 +267,6 @@
           </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="campoNome">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
@@ -319,9 +313,6 @@
           </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="campoAnno">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
@@ -333,9 +324,6 @@
           </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="campoMese">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel10">
           <Properties>
@@ -347,13 +335,10 @@
           </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="campoGiorno">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel11">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Ora;"/>
+            <Property name="text" type="java.lang.String" value="Ora:"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableLocal" type="java.lang.Boolean" value="true"/>
@@ -361,9 +346,6 @@
           </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="campoOra">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel12">
           <Properties>
@@ -375,9 +357,6 @@
           </AuxValues>
         </Component>
         <Component class="javax.swing.JTextField" name="campoMinuti">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="bottoneAggiungi">
           <Properties>

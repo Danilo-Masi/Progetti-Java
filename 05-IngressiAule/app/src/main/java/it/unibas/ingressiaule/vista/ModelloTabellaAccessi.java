@@ -26,7 +26,7 @@ public class ModelloTabellaAccessi extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 4;
+        return 5;
     }
 
     @Override
@@ -36,12 +36,15 @@ public class ModelloTabellaAccessi extends AbstractTableModel {
             return accesso.getMatricola();
         }
         if (columnIndex == 1) {
-            return accesso.getPermanenza();
+            return accesso.getNomeStudente();
         }
         if (columnIndex == 2) {
-            return accesso.getMotivazione();
+            return accesso.getPermanenza();
         }
         if (columnIndex == 3) {
+            return accesso.getMotivazione();
+        }
+        if (columnIndex == 4) {
             DateFormat df = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT);
             return df.format(accesso.getData().getTime());
         }
@@ -50,10 +53,10 @@ public class ModelloTabellaAccessi extends AbstractTableModel {
 
     @Override
     public Class<?> getColumnClass(int columnIndex) {
-        if (columnIndex == 1) {
+        if (columnIndex == 2) {
             return Integer.class;
         }
-        if (columnIndex == 3) {
+        if (columnIndex == 4) {
             return Calendar.class;
         }
         return String.class;
@@ -65,12 +68,15 @@ public class ModelloTabellaAccessi extends AbstractTableModel {
             return "Matricola";
         }
         if (columnIndex == 1) {
-            return "Permanenza (min)";
+            return "Nome";
         }
         if (columnIndex == 2) {
-            return "Motivazione";
+            return "Permanenza (min)";
         }
         if (columnIndex == 3) {
+            return "Motivazione";
+        }
+        if (columnIndex == 4) {
             return "Data";
         }
         return "";

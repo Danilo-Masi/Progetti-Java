@@ -8,6 +8,7 @@ import it.unibas.ingressiaule.persistenza.DAOArchivioMock;
 import it.unibas.ingressiaule.persistenza.IDAOArchivio;
 import it.unibas.ingressiaule.vista.Frame;
 import it.unibas.ingressiaule.vista.VistaDettagliAula;
+import it.unibas.ingressiaule.vista.VistaMesiFrequenti;
 import it.unibas.ingressiaule.vista.VistaPrincipale;
 import javax.swing.SwingUtilities;
 
@@ -30,6 +31,7 @@ public class Applicazione {
     private VistaPrincipale vistaPrincipale;
     private VistaDettagliAula vistaDettagliAula;
     private ControlloDettagliAula controlloDettagliAula;
+    private VistaMesiFrequenti vistaMesiFrequenti;
 
     private void inizializza() {
         this.modello = new Modello();
@@ -40,7 +42,9 @@ public class Applicazione {
         this.vistaPrincipale = new VistaPrincipale();
         this.vistaDettagliAula = new VistaDettagliAula(frame, true);
         this.controlloDettagliAula = new ControlloDettagliAula();
+        this.vistaMesiFrequenti = new VistaMesiFrequenti(frame, true);
         //Inizializzazione
+        this.vistaMesiFrequenti.inizializza();
         this.vistaDettagliAula.inizializza();
         this.vistaPrincipale.inizializza();
         this.frame.inizializza();
@@ -76,6 +80,10 @@ public class Applicazione {
 
     public ControlloDettagliAula getControlloDettagliAula() {
         return controlloDettagliAula;
+    }
+
+    public VistaMesiFrequenti getVistaMesiFrequenti() {
+        return vistaMesiFrequenti;
     }
 
     public static void main(String[] args) {

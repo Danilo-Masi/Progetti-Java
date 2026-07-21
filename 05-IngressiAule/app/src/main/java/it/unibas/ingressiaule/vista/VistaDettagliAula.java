@@ -12,10 +12,23 @@ public class VistaDettagliAula extends javax.swing.JDialog {
 
     public void inizializza() {
         initComponents();
+        this.comboMotivazione.removeAllItems();
+        this.comboMotivazione.addItem("");
+        this.comboMotivazione.addItem(Costanti.MOTIVAZIONE_ESAME);
+        this.comboMotivazione.addItem(Costanti.MOTIVAZIONE_LEZIONE);
+        this.comboMotivazione.addItem(Costanti.MOTIVAZIONE_RICEVIMENTO);
         this.tabellaAccessi.setModel(new ModelloTabellaAccessi());
+        this.pack();
     }
 
-    private void inizializzaComponenti() {
+    public void visualizza() {
+        aggiornaDati();
+        inizializzaAzioni();
+        setLocationRelativeTo(getParent());
+        this.setVisible(true);
+    }
+
+    public void aggiornaDati() {
         Aula aula = (Aula) Applicazione.getInstance().getModello().getBean(Costanti.AULA);
         this.labelCodice.setText(aula.getCodice());
         this.labelNome.setText(aula.getNome());
@@ -25,10 +38,44 @@ public class VistaDettagliAula extends javax.swing.JDialog {
         modelloTabellaAccessi.aggiornaContenuto();
     }
 
-    public void visualizza() {
-        inizializzaComponenti();
-        setLocationRelativeTo(Applicazione.getInstance().getFrame());
-        this.setVisible(true);
+    private void inizializzaAzioni() {
+        this.bottoneAggiungi.setAction(Applicazione.getInstance().getControlloDettagliAula().getAzionAggiungiAccesso());
+    }
+
+    public String getMatricola() {
+        return this.campoMatrciola.getText();
+    }
+
+    public String getNome() {
+        return this.campoNome.getText();
+    }
+
+    public String getMotivazione() {
+        return this.comboMotivazione.getSelectedItem().toString();
+    }
+
+    public int getPermanenza() {
+        return (int) this.spinnerPermanenza.getValue();
+    }
+
+    public String getAnnoString() {
+        return this.campoAnno.getText();
+    }
+
+    public String getMeseString() {
+        return this.campoMese.getText();
+    }
+
+    public String getGiornoString() {
+        return this.campoGiorno.getText();
+    }
+
+    public String getOraString() {
+        return this.campoOra.getText();
+    }
+
+    public String getMinutiString() {
+        return this.campoMinuti.getText();
     }
 
     @SuppressWarnings("unchecked")
@@ -95,11 +142,7 @@ public class VistaDettagliAula extends javax.swing.JDialog {
 
         jLabel4.setText("Matricola:");
 
-        campoMatrciola.setText("jTextField1");
-
         jLabel5.setText("Nome:");
-
-        campoNome.setText("jTextField1");
 
         jLabel6.setText("Motivazione:");
 
@@ -109,23 +152,13 @@ public class VistaDettagliAula extends javax.swing.JDialog {
 
         jLabel8.setText("Anno:");
 
-        campoAnno.setText("jTextField1");
-
         jLabel9.setText("Mese:");
-
-        campoMese.setText("jTextField1");
 
         jLabel10.setText("Giorno:");
 
-        campoGiorno.setText("jTextField1");
-
-        jLabel11.setText("Ora;");
-
-        campoOra.setText("jTextField1");
+        jLabel11.setText("Ora:");
 
         jLabel12.setText("Minuti:");
-
-        campoMinuti.setText("jTextField1");
 
         bottoneAggiungi.setText("jButton1");
 
@@ -157,7 +190,7 @@ public class VistaDettagliAula extends javax.swing.JDialog {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(campoAnno)
+                            .addComponent(campoAnno, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
                             .addComponent(campoOra))
                         .addGap(30, 30, 30)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -170,11 +203,11 @@ public class VistaDettagliAula extends javax.swing.JDialog {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel9)
                                 .addGap(18, 18, 18)
-                                .addComponent(campoMese)
+                                .addComponent(campoMese, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel10)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(campoGiorno, javax.swing.GroupLayout.DEFAULT_SIZE, 83, Short.MAX_VALUE)))))
+                                .addComponent(campoGiorno, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)))))
                 .addGap(30, 30, 30))
         );
         jPanel1Layout.setVerticalGroup(
@@ -245,7 +278,7 @@ public class VistaDettagliAula extends javax.swing.JDialog {
                     .addComponent(jLabel3)
                     .addComponent(labelPiano))
                 .addGap(30, 30, 30)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
                 .addGap(30, 30, 30)
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(30, 30, 30))

@@ -19,6 +19,7 @@ public class Frame extends javax.swing.JFrame {
         this.menuEsci.setAction(Applicazione.getInstance().getControlloMenu().getAzioneEsci());
         this.menuCarica.setAction(Applicazione.getInstance().getControlloMenu().getAzioneCarica());
         this.menuVerifica.setAction(Applicazione.getInstance().getControlloMenu().getAzioneVerifica());
+        this.menuCalcola.setAction(Applicazione.getInstance().getControlloMenu().getAzioneCalcolaMesiFrequenti());
     }
 
     public void mostraMessaggioErrore(String errore) {
@@ -36,6 +37,7 @@ public class Frame extends javax.swing.JFrame {
         javax.swing.JMenuBar jMenuBar1 = new javax.swing.JMenuBar();
         javax.swing.JMenu jMenu1 = new javax.swing.JMenu();
         menuVerifica = new javax.swing.JMenuItem();
+        menuCalcola = new javax.swing.JMenuItem();
         menuCarica = new javax.swing.JMenuItem();
         menuEsci = new javax.swing.JMenuItem();
 
@@ -46,6 +48,9 @@ public class Frame extends javax.swing.JFrame {
 
         menuVerifica.setText("jMenuItem1");
         jMenu1.add(menuVerifica);
+
+        menuCalcola.setText("jMenuItem1");
+        jMenu1.add(menuCalcola);
 
         menuCarica.setText("jMenuItem2");
         jMenu1.add(menuCarica);
@@ -72,6 +77,7 @@ public class Frame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem menuCalcola;
     private javax.swing.JMenuItem menuCarica;
     private javax.swing.JMenuItem menuEsci;
     private javax.swing.JMenuItem menuVerifica;
