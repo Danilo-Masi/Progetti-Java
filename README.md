@@ -14,3 +14,5 @@ These projects stem from educational exercises conducted during the university c
 |   03  | Concorsi         | Multi window desktop application for managing competitions, using Collections sorting and the Calendar API for date handling |
 |   04  | Comuni           | Application built with Gradle that reads Italian municipality data from a JSON file and aggregates statistics by province    |
 |   05  | Ingressi Aule    | Complete application built with Gradle to manage classroom access, with medium level logic implementation  |
+|   06  | Anagrafica       | Comprehensive exercise |
+|   07  | Banca            | Comprehensive exercise |
